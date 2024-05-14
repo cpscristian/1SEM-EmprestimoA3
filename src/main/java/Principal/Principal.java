@@ -1,6 +1,6 @@
-package com.mycompany.emprestimoferramentaa3;
+package Principal;
 
-public class EmprestimoFerramentaA3 {
+public class Principal {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
