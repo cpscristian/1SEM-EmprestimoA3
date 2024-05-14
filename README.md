@@ -1,9 +1,9 @@
 # Empréstimo de Ferramentas
 
-#Descrição
+Descrição
 Projeto feito para a A3 no primeiro semestre da nossa faculdade.
 
-##Autores
+Autores
 - Cristian de Paula Santos
-- Luiza 
+- Luiza da Motta de Lima
 - Luiz
