@@ -1,7 +1,6 @@
 package model;
 
-public class Amigo {
-    private String nome;
+public class Amigo extends Base {
     private String telefone;
 
     public Amigo(){
@@ -11,14 +10,6 @@ public class Amigo {
     public Amigo(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getTelefone() {
