@@ -1,7 +1,8 @@
 package model;
 
-public class Amigo extends Base {
+public class Amigo{
     private String telefone;
+    private String nome;
 
     public Amigo(){
         this("","");
