@@ -1,8 +1,11 @@
 package principal;
 
+import view.MenuPrincipal;
+
 public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        MenuPrincipal janela = new MenuPrincipal();
+        janela.setVisible(true);
     }
 }
