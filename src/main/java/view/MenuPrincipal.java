@@ -12,32 +12,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         BFechar = new javax.swing.JButton();
-        BAddF = new javax.swing.JButton();
-        BAddA = new javax.swing.JButton();
+        BGerF = new javax.swing.JButton();
+        BGerA = new javax.swing.JButton();
+        BGerE = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
 
         jLabel1.setText("Empréstimo de ferramentas");
 
-        BFechar.setText("Fechar");
+        BFechar.setText("Sair");
         BFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BFecharActionPerformed(evt);
             }
         });
 
-        BAddF.setText("Adicionar ferramenta");
-        BAddF.addActionListener(new java.awt.event.ActionListener() {
+        BGerF.setText("Gerenciar ferramenta");
+        BGerF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BAddFActionPerformed(evt);
+                BGerFActionPerformed(evt);
             }
         });
 
-        BAddA.setText("Adicionar amigo");
-        BAddA.addActionListener(new java.awt.event.ActionListener() {
+        BGerA.setText("Gerenciar amigo");
+        BGerA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BAddAActionPerformed(evt);
+                BGerAActionPerformed(evt);
+            }
+        });
+
+        BGerE.setText("Gerenciar empréstimo");
+        BGerE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BGerEActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Histórico");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -50,27 +66,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(BFechar)
                 .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BAddF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BAddA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(122, 122, 122)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BGerE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BGerA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BGerF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addComponent(BAddF)
+                .addGap(36, 36, 36)
+                .addComponent(BGerF)
                 .addGap(18, 18, 18)
-                .addComponent(BAddA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addComponent(BGerA)
+                .addGap(18, 18, 18)
+                .addComponent(BGerE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(BFechar)
                 .addGap(17, 17, 17))
         );
@@ -82,17 +100,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BFecharActionPerformed
 
-    private void BAddFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAddFActionPerformed
+    private void BGerFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerFActionPerformed
         CadFerramenta janela = new CadFerramenta();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
-    }//GEN-LAST:event_BAddFActionPerformed
+    }//GEN-LAST:event_BGerFActionPerformed
 
-    private void BAddAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAddAActionPerformed
+    private void BGerAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerAActionPerformed
         CadAmigo janela = new CadAmigo();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
-    }//GEN-LAST:event_BAddAActionPerformed
+    }//GEN-LAST:event_BGerAActionPerformed
+
+    private void BGerEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerEActionPerformed
+        RegEmprestimo janela = new RegEmprestimo();
+        janela.setVisible(true);
+        MenuPrincipal.this.dispose();
+    }//GEN-LAST:event_BGerEActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JHistorico janela = new JHistorico();
+        janela.setVisible(true);
+        MenuPrincipal.this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         
@@ -124,9 +154,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BAddA;
-    private javax.swing.JButton BAddF;
     private javax.swing.JButton BFechar;
+    private javax.swing.JButton BGerA;
+    private javax.swing.JButton BGerE;
+    private javax.swing.JButton BGerF;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

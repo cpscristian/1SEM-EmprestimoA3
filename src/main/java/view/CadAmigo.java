@@ -16,6 +16,7 @@ public class CadAmigo extends javax.swing.JFrame {
         BVoltarA = new javax.swing.JButton();
         BSalvarA = new javax.swing.JButton();
         TFNomeA = new javax.swing.JTextField();
+        BExcluirA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Amigo");
@@ -38,27 +39,35 @@ public class CadAmigo extends javax.swing.JFrame {
             }
         });
 
+        BExcluirA.setText("Excluir");
+        BExcluirA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BExcluirAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TFTelefoneA, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                            .addComponent(TFNomeA)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(BVoltarA)
-                        .addGap(78, 78, 78)
-                        .addComponent(BSalvarA)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(117, 117, 117)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TFTelefoneA, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                    .addComponent(TFNomeA))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(86, Short.MAX_VALUE)
+                .addComponent(BVoltarA)
+                .addGap(18, 18, 18)
+                .addComponent(BExcluirA)
+                .addGap(18, 18, 18)
+                .addComponent(BSalvarA)
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,11 +80,12 @@ public class CadAmigo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TFTelefoneA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BVoltarA)
-                    .addComponent(BSalvarA))
-                .addGap(42, 42, 42))
+                    .addComponent(BSalvarA)
+                    .addComponent(BExcluirA))
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -90,6 +100,10 @@ public class CadAmigo extends javax.swing.JFrame {
     private void BSalvarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BSalvarAActionPerformed
+
+    private void BExcluirAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BExcluirAActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -124,6 +138,7 @@ public class CadAmigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BExcluirA;
     private javax.swing.JButton BSalvarA;
     private javax.swing.JButton BVoltarA;
     private javax.swing.JTextField TFNomeA;
