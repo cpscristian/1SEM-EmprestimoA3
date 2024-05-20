@@ -4,6 +4,7 @@ public class CadFerramenta extends javax.swing.JFrame {
 
     public CadFerramenta() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     

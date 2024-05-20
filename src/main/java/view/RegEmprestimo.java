@@ -4,6 +4,7 @@ public class RegEmprestimo extends javax.swing.JFrame {
 
    public RegEmprestimo() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
      @SuppressWarnings("unchecked")
@@ -11,24 +12,45 @@ public class RegEmprestimo extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        BVoltarE = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro de empréstimos");
+
+        BVoltarE.setText("Voltar");
+        BVoltarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BVoltarEActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(BVoltarE)
+                .addContainerGap(266, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(238, Short.MAX_VALUE)
+                .addComponent(BVoltarE)
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BVoltarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVoltarEActionPerformed
+        MenuPrincipal janela = new MenuPrincipal();
+        janela.setVisible(true);
+        RegEmprestimo.this.dispose();
+    }//GEN-LAST:event_BVoltarEActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -57,6 +79,7 @@ public class RegEmprestimo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BVoltarE;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

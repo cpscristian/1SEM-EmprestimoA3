@@ -4,6 +4,7 @@ public class CadAmigo extends javax.swing.JFrame {
 
     public CadAmigo() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
