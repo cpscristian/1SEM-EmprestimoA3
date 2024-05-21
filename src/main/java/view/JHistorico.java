@@ -7,6 +7,7 @@ public class JHistorico extends javax.swing.JFrame {
     public JHistorico() {
         initComponents();
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")

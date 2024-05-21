@@ -5,6 +5,7 @@ public class GerAmigo extends javax.swing.JFrame {
     public GerAmigo() {
         initComponents();
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -17,11 +18,10 @@ public class GerAmigo extends javax.swing.JFrame {
         BVoltarA = new javax.swing.JButton();
         BSalvarA = new javax.swing.JButton();
         TFNomeA = new javax.swing.JTextField();
-        BExcluirA = new javax.swing.JButton();
+        BListaA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Amigo");
-        setPreferredSize(new java.awt.Dimension(430, 317));
         setResizable(false);
 
         jLabel1.setText("Nome:");
@@ -42,10 +42,10 @@ public class GerAmigo extends javax.swing.JFrame {
             }
         });
 
-        BExcluirA.setText("Excluir");
-        BExcluirA.addActionListener(new java.awt.event.ActionListener() {
+        BListaA.setText("Lista");
+        BListaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BExcluirAActionPerformed(evt);
+                BListaAActionPerformed(evt);
             }
         });
 
@@ -53,16 +53,8 @@ public class GerAmigo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(BVoltarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(BExcluirA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(BSalvarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -70,12 +62,17 @@ public class GerAmigo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TFNomeA)
                     .addComponent(TFTelefoneA, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BVoltarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BSalvarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BListaA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
+                .addContainerGap(105, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(TFNomeA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -83,12 +80,15 @@ public class GerAmigo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TFTelefoneA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BExcluirA)
-                    .addComponent(BVoltarA)
-                    .addComponent(BSalvarA))
-                .addGap(41, 41, 41))
+                .addGap(121, 121, 121))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(BListaA)
+                .addGap(36, 36, 36)
+                .addComponent(BSalvarA)
+                .addGap(35, 35, 35)
+                .addComponent(BVoltarA)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,12 +101,22 @@ public class GerAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_BVoltarAActionPerformed
 
     private void BSalvarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarAActionPerformed
-        // TODO add your handling code here:
+        try {
+            String nome = "";
+            String telefone = "";
+            
+            nome = this.TFNomeA.getText();
+            telefone = this.TFTelefoneA.getText();
+        } catch (Exception E){
+            
+        }
     }//GEN-LAST:event_BSalvarAActionPerformed
 
-    private void BExcluirAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BExcluirAActionPerformed
+    private void BListaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BListaAActionPerformed
+        ListaAmigo janela = new ListaAmigo();
+        janela.setVisible(true);
+        GerAmigo.this.dispose();
+    }//GEN-LAST:event_BListaAActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -144,7 +154,7 @@ public class GerAmigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BExcluirA;
+    private javax.swing.JButton BListaA;
     private javax.swing.JButton BSalvarA;
     private javax.swing.JButton BVoltarA;
     private javax.swing.JTextField TFNomeA;
