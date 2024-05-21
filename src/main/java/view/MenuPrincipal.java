@@ -77,7 +77,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(BFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 89, Short.MAX_VALUE))
+                .addGap(89, 89, 89))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,19 +105,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BFecharActionPerformed
 
     private void BGerFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerFActionPerformed
-        CadFerramenta janela = new CadFerramenta();
+        GerFerramenta janela = new GerFerramenta();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerFActionPerformed
 
     private void BGerAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerAActionPerformed
-        CadAmigo janela = new CadAmigo();
+        GerAmigo janela = new GerAmigo();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerAActionPerformed
 
     private void BGerEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerEActionPerformed
-        RegEmprestimo janela = new RegEmprestimo();
+        GerEmprestimo janela = new GerEmprestimo();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerEActionPerformed
