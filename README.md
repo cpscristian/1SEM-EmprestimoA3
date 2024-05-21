@@ -19,4 +19,4 @@ Projeto feito para a A3 no primeiro semestre da nossa faculdade.
 ### Requisitos Não-Funcionais:
 - RNF001 O software deve rodar localmente no computador do usuário.
 - RNF002 O sistema deve rodar em Java.
-- RNF003 O sistema deve rodar em qualquer sistema operacional atual.
+- RNF003 O sistema deve rodar em qualquer sistema operacional atual de computador.
