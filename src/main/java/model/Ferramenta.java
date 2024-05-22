@@ -1,27 +1,31 @@
 package model;
 
+import dao.FerramentaDAO;
+import java.util.ArrayList;
+
 public class Ferramenta {
-    
-    private String nome;
+    private String nomeFerramenta;
     private String marca;
     private double preco;
+    private FerramentaDAO dao;
 
     public Ferramenta(){
         this("","",0.0);
     }
     
-    public Ferramenta(String nome, String marca, double preco) {
-        this.nome = nome;
+    public Ferramenta(String nomeFerramenta, String marca, double preco) {
+        this.nomeFerramenta = nomeFerramenta;
         this.marca = marca;
         this.preco = preco;
+        this.dao = new FerramentaDAO();
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeFerramenta() {
+        return nomeFerramenta;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeFerramenta(String nomeFerramenta) {
+        this.nomeFerramenta = nomeFerramenta;
     }
 
     public String getMarca() {
@@ -40,6 +44,8 @@ public class Ferramenta {
         this.preco = preco;
     }
     
-    
+    public ArrayList<Ferramenta> getMinhaListaFerramenta() {
+        return dao.getMinhaListaFerramenta();
+    }
     
 }
