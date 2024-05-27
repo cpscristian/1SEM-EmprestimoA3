@@ -4,22 +4,35 @@ import dao.FerramentaDAO;
 import java.util.ArrayList;
 
 public class Ferramenta {
+
+    private int idFerramenta;
     private String nomeFerramenta;
     private String marca;
     private double preco;
     private FerramentaDAO dao;
+    
+    private static int idCounter = 0;
 
     public Ferramenta(){
         this("","",0.0);
     }
     
     public Ferramenta(String nomeFerramenta, String marca, double preco) {
+        this.idFerramenta = ++idCounter;
         this.nomeFerramenta = nomeFerramenta;
         this.marca = marca;
         this.preco = preco;
         this.dao = new FerramentaDAO();
     }
+    
+    public int getIdFerramenta() {
+        return idFerramenta;
+    }
 
+    public void setIdFerramenta(int idFerramenta) {
+        this.idFerramenta = idFerramenta;
+    }
+    
     public String getNomeFerramenta() {
         return nomeFerramenta;
     }

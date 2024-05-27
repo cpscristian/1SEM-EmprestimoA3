@@ -1,5 +1,6 @@
 package view;
 
+import view.GerFerramenta;
 public class ListaFerramenta extends javax.swing.JFrame {
 
     public ListaFerramenta() {
@@ -13,13 +14,13 @@ public class ListaFerramenta extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TbListaF = new javax.swing.JTable();
         BVoltarLF = new javax.swing.JButton();
         BExcluirLF = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TbListaF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -38,7 +39,7 @@ public class ListaFerramenta extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TbListaF);
 
         BVoltarLF.setText("Voltar");
         BVoltarLF.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +119,7 @@ public class ListaFerramenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BExcluirLF;
     private javax.swing.JButton BVoltarLF;
+    private javax.swing.JTable TbListaF;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

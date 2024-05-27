@@ -1,8 +1,11 @@
 package view;
+import model.Ferramenta;
 
 public class GerFerramenta extends javax.swing.JFrame {
-
+    private ListaFerramenta listaFerramenta;
+    
     public GerFerramenta() {
+        this.listaFerramenta = listaFerramenta;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -100,16 +103,30 @@ public class GerFerramenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+//Botão Voltar
     private void BVoltarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVoltarFActionPerformed
         MenuPrincipal janela = new MenuPrincipal();
         janela.setVisible(true);
         GerFerramenta.this.dispose();
     }//GEN-LAST:event_BVoltarFActionPerformed
 
+//Botão Salvar
     private void BSalvarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarFActionPerformed
-        // TODO add your handling code here:
+        String nomeFerramenta = TFNomeF.getText();
+        String marca = TFMarcaF.getText();
+        double preco = Double.parseDouble(TFPrecoF.getText());
+        
+        Ferramenta ferramenta = new Ferramenta(nomeFerramenta, marca, preco);
+        
+        ferramenta.setNomeFerramenta(nomeFerramenta);
+        ferramenta.setMarca(marca);
+        ferramenta.setPreco(preco);
+        
+        //INCOMPLETO
+        
     }//GEN-LAST:event_BSalvarFActionPerformed
 
+//Botão Lista
     private void BListaFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BListaFActionPerformed
         ListaFerramenta janela = new ListaFerramenta();
         janela.setVisible(true);
