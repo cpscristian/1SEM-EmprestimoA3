@@ -4,12 +4,13 @@ import dao.AmigoDAO;
 import java.util.ArrayList;
 
 public class Amigo{
+    //Atributos
     private int idAmigo;
     private String telefone;
     private String nomeAmigo;
     private AmigoDAO dao;
     
-    private static int idCounter = 0;
+    private static int idCounter = 0;//O id é preenchido automaticamente
 
     public Amigo(){
         this("","");

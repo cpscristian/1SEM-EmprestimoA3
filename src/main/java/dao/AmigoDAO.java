@@ -10,7 +10,6 @@ import modelo.Amigo;
 
 public class AmigoDAO extends BaseDAO{
     public ArrayList<Amigo> minhaListaAmigo = new ArrayList<>();
-
     // Retorna a Lista de Amigos(objetos)
     public ArrayList<Amigo> getMinhaListaAmigo() {
         minhaListaAmigo.clear();
@@ -30,6 +29,10 @@ public class AmigoDAO extends BaseDAO{
         }
         
         return minhaListaAmigo;
+    }
+    
+    public void setMinhaListaAmigo(ArrayList<Amigo> minhaListaAmigo) {
+        this.minhaListaAmigo = minhaListaAmigo;
     }
     
     //Carrega um Amigo pelo id

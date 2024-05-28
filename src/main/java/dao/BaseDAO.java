@@ -20,7 +20,7 @@ public class BaseDAO {
                 String url = "jdbc:mysql://" + server + ":3306/" 
                         + database + "?useTimezone=true&serverTimezone=UTC";
                 String user = "root";
-                String password = "root";
+                String password = "Unisul@1520";
                 
                 //Conectando...
                 connection = DriverManager.getConnection(url, user, password);

@@ -31,6 +31,11 @@ public class FerramentaDAO extends BaseDAO {
         
         return minhaListaFerramenta;
     }
+
+    public void setMinhaListaFerramenta(ArrayList<Ferramenta> minhaListaFerramenta) {
+        this.minhaListaFerramenta = minhaListaFerramenta;
+    }
+    
     //Carrega uma Ferramenta pelo id
     public Ferramenta carregaFerramenta(int idFerramenta) {
         Ferramenta objeto = new Ferramenta();

@@ -1,11 +1,16 @@
 package visao;
 
+import modelo.Amigo;
+import javax.swing.JOptionPane;
+
 public class GerAmigo extends javax.swing.JFrame {
 
+    private Amigo objetoamigo; // cria o vínculo com o Amigo
     public GerAmigo() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        this.objetoamigo = new Amigo(); // carrega objeto vazio de Amigo
     }
 
     @SuppressWarnings("unchecked")
@@ -102,13 +107,34 @@ public class GerAmigo extends javax.swing.JFrame {
 
     private void BSalvarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarAActionPerformed
         try {
-            String nome = "";
+            String nomeAmigo = "";
             String telefone = "";
             
-            nome = this.TFNomeA.getText();
-            telefone = this.TFTelefoneA.getText();
-        } catch (Exception E){
+            if (this.TFNomeA.getText().length() < 2) {
+                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nomeAmigo = this.TFNomeA.getText();
+            }
             
+            if (this.TFTelefoneA.getText().length() < 8) {
+                throw new Mensagem("Idade deve ser número e maior que zero.");
+            } else {
+                telefone = this.TFTelefoneA.getText();
+            }
+            
+            // envia os dados para o Controlador cadastrar
+            if (this.objetoamigo.insertAmigoBD(nomeAmigo, telefone)) {
+                JOptionPane.showMessageDialog(null, "Amigo cadastrado com Sucesso!");
+                // limpa campos da interface
+                this.TFNomeA.setText("");
+                this.TFTelefoneA.setText("");
+            }
+            //nomeAmigo = TFNomeA
+            //telefone = TFTelefoneA
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
     }//GEN-LAST:event_BSalvarAActionPerformed
 
