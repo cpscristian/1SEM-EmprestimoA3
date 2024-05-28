@@ -47,6 +47,11 @@ public class Amigo{
         this.nomeAmigo = nomeAmigo;
     }
     
+    @Override
+    public String toString() {
+        return super.toString() + "nomeAmigo=" + nomeAmigo + ", telefone=" + telefone;
+    }
+    
     //Pegando os métodos de AmigoDAO
     public ArrayList<Amigo> getMinhaListaAmigo() {
         return dao.getMinhaListaAmigo();

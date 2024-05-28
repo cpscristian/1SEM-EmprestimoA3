@@ -57,6 +57,11 @@ public class Ferramenta {
         this.preco = preco;
     }
     
+    @Override
+    public String toString() {
+        return super.toString() + "nomeFerramenta= " + nomeFerramenta + "marca" + marca + ", preco=" + preco;
+    }
+    
     //Pegando os métodos de FerramentaDAO
     public ArrayList<Ferramenta> getMinhaListaFerramenta() {
         return dao.getMinhaListaFerramenta();

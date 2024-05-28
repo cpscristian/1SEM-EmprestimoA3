@@ -1,5 +1,7 @@
 package visao;
 
+import visao.GerAmigo;
+
 public class ListaAmigo extends javax.swing.JFrame {
 
     public ListaAmigo() {
@@ -36,6 +38,11 @@ public class ListaAmigo extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        TListaA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TListaAMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(TListaA);
@@ -93,6 +100,16 @@ public class ListaAmigo extends javax.swing.JFrame {
     private void BExcluirLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirLAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BExcluirLAActionPerformed
+
+    private void TListaAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TListaAMouseClicked
+        if (this.TListaA.getSelectedRow() != -1) {
+            String nomeAmigo = this.TListaA.getValueAt(this.TListaA.getSelectedRow(), 1).toString();
+            String telefone = this.TListaA.getValueAt(this.TListaA.getSelectedRow(), 2).toString();
+
+            //this.TListaA.TFNomeA(nomeAmigo);
+            //this.TListaA.TFTelefoneA(telefone);
+        }
+    }//GEN-LAST:event_TListaAMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
