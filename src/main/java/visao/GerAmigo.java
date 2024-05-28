@@ -98,13 +98,13 @@ public class GerAmigo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Volta pra outra página
     private void BVoltarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVoltarAActionPerformed
         MenuPrincipal janela = new MenuPrincipal();
         janela.setVisible(true);
         GerAmigo.this.dispose();
     }//GEN-LAST:event_BVoltarAActionPerformed
-
+    //Cadastra no BD
     private void BSalvarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarAActionPerformed
         try {
             String nomeAmigo = "";
@@ -137,7 +137,7 @@ public class GerAmigo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
     }//GEN-LAST:event_BSalvarAActionPerformed
-
+    //Vai pra Lista
     private void BListaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BListaAActionPerformed
         ListaAmigo janela = new ListaAmigo();
         janela.setVisible(true);

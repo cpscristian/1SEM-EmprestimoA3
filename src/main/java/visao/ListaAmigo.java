@@ -13,13 +13,13 @@ public class ListaAmigo extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TListaA = new javax.swing.JTable();
         BVoltarLA = new javax.swing.JButton();
         BExcluirLA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TListaA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -38,7 +38,7 @@ public class ListaAmigo extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable2);
+        jScrollPane1.setViewportView(TListaA);
 
         BVoltarLA.setText("Voltar");
         BVoltarLA.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +48,11 @@ public class ListaAmigo extends javax.swing.JFrame {
         });
 
         BExcluirLA.setText("Excluir");
+        BExcluirLA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BExcluirLAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +90,10 @@ public class ListaAmigo extends javax.swing.JFrame {
         ListaAmigo.this.dispose();
     }//GEN-LAST:event_BVoltarLAActionPerformed
 
+    private void BExcluirLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirLAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BExcluirLAActionPerformed
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -118,7 +127,7 @@ public class ListaAmigo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BExcluirLA;
     private javax.swing.JButton BVoltarLA;
+    private javax.swing.JTable TListaA;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
