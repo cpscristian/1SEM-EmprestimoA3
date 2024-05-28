@@ -1,5 +1,5 @@
-package view;
-import model.Ferramenta;
+package visao;
+import modelo.Ferramenta;
 
 public class GerFerramenta extends javax.swing.JFrame {
     private ListaFerramenta listaFerramenta;

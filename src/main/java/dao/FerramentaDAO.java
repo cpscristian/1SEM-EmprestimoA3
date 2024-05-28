@@ -5,13 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.Ferramenta;
+import modelo.Ferramenta;
 
 public class FerramentaDAO extends BaseDAO {
-    public FerramentaDAO(){
-        super.getConexao();
-    }
-    
     public ArrayList<Ferramenta> minhaListaFerramenta = new ArrayList<>();
     
     // Retorna a Lista de Ferramentas(objetos)
@@ -85,7 +81,7 @@ public class FerramentaDAO extends BaseDAO {
         return maiorIDFerramenta;
     }
     
-    // Deleta uma ferramenta específico pelo seu campo ID
+    // Deleta uma ferramenta específica pelo seu campo ID
     public boolean deleteFerramentaBD(int idFerramenta) {
         try {
             Statement stmt = this.getConexao().createStatement();
@@ -96,8 +92,8 @@ public class FerramentaDAO extends BaseDAO {
         }
         return true;
     }
-    // Edita um ferramenta específico pelo seu campo ID
-
+    
+    // Edita uma ferramenta específica pelo seu campo ID
     public boolean updateFerramentaBD(Ferramenta objeto) {
         String sql = "UPDATE ferramenta set nomeFerramenta = ?,marca = ? ,preco = ? WHERE idFerramenta = ?";
         try {
@@ -113,5 +109,4 @@ public class FerramentaDAO extends BaseDAO {
             throw new RuntimeException(erro);
         }
     }
-
 }

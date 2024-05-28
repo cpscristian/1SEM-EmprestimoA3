@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BaseDAO {
+    //ESTABELECE A CONEXÃO
     public Connection getConexao() {
     
         Connection connection = null; //instância da conexão

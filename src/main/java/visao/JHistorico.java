@@ -1,4 +1,4 @@
-package view;
+package visao;
 
 
 public class JHistorico extends javax.swing.JFrame {

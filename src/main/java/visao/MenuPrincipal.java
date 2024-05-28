@@ -1,4 +1,4 @@
-package view;
+package visao;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 

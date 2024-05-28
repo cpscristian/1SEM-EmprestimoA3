@@ -1,6 +1,6 @@
 package dao;
 
-import model.Emprestimo;
+import modelo.Emprestimo;
 
 public class EmprestimoDAO {
     

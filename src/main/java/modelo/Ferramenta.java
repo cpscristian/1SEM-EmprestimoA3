@@ -1,17 +1,17 @@
-package model;
+package modelo;
 
 import dao.FerramentaDAO;
 import java.util.ArrayList;
 
 public class Ferramenta {
-
+    //Atributos
     private int idFerramenta;
     private String nomeFerramenta;
     private String marca;
     private double preco;
     private FerramentaDAO dao;
     
-    private static int idCounter = 0;
+    private static int idCounter = 0;//O id é preenchido automaticamente
 
     public Ferramenta(){
         this("","",0.0);
@@ -57,6 +57,7 @@ public class Ferramenta {
         this.preco = preco;
     }
     
+    //Pegando os métodos de FerramentaDAO
     public ArrayList<Ferramenta> getMinhaListaFerramenta() {
         return dao.getMinhaListaFerramenta();
     }
@@ -71,6 +72,7 @@ public class Ferramenta {
         dao.insertFerramentaBD(objeto);
         return true;
     }
+    
     public int maiorIDFerramenta() {
         return dao.maiorIDFerramenta();
     }

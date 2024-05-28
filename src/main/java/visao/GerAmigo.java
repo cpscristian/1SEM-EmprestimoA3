@@ -1,4 +1,4 @@
-package view;
+package visao;
 
 public class GerAmigo extends javax.swing.JFrame {
 

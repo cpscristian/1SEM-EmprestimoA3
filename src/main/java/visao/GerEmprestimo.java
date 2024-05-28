@@ -1,4 +1,4 @@
-package view;
+package visao;
 
 public class GerEmprestimo extends javax.swing.JFrame {
 
