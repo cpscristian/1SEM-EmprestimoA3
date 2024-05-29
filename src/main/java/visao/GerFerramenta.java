@@ -117,7 +117,7 @@ public class GerFerramenta extends javax.swing.JFrame {
             String nomeFerramenta = "";
             String marca = "";
             double preco = 0.0;
-            
+            //Restrições
             if (this.TFNomeF.getText().length() < 2) {
                 throw new Mensagem("Nome da ferramenta deve conter ao menos 2 caracteres.");
             } else {
