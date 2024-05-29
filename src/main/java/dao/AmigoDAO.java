@@ -54,7 +54,7 @@ public class AmigoDAO extends BaseDAO{
     
     // Cadastra novo amigo
     public boolean insertAmigoBD(Amigo objeto) {
-        String sql = "INSERT INTO amigo(nomeamigo,telefone) VALUES(?,?)";
+        String sql = "INSERT INTO amigo(nomeAmigo,telefone) VALUES(?,?)";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setString(1, objeto.getNomeAmigo());

@@ -59,9 +59,9 @@ public class FerramentaDAO extends BaseDAO {
         String sql = "INSERT INTO ferramenta(nomeFerramenta, marca, preco) VALUES(?,?,?)";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
-            stmt.setString(2, objeto.getNomeFerramenta());
-            stmt.setString(4, objeto.getMarca());
-            stmt.setDouble(5, objeto.getPreco());
+            stmt.setString(1, objeto.getNomeFerramenta());
+            stmt.setString(2, objeto.getMarca());
+            stmt.setDouble(3, objeto.getPreco());
             stmt.execute();
             stmt.close();
             return true;

@@ -1,6 +1,8 @@
 package visao;
 
-import visao.GerAmigo;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.Amigo;
 
 public class ListaAmigo extends javax.swing.JFrame {
 
@@ -102,15 +104,23 @@ public class ListaAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_BExcluirLAActionPerformed
 
     private void TListaAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TListaAMouseClicked
-        if (this.TListaA.getSelectedRow() != -1) {
-            String nomeAmigo = this.TListaA.getValueAt(this.TListaA.getSelectedRow(), 1).toString();
-            String telefone = this.TListaA.getValueAt(this.TListaA.getSelectedRow(), 2).toString();
-
-            //this.TListaA.TFNomeA(nomeAmigo);
-            //this.TListaA.TFTelefoneA(telefone);
-        }
+        //inutilizado, nao sei como tirar :/
     }//GEN-LAST:event_TListaAMouseClicked
 
+    public void carregaLista() {
+        DefaultTableModel modelo = (DefaultTableModel) this.TListaA.getModel();
+        modelo.setNumRows(0); // Posiciona na primeira linha da tabela
+        // Carrega a lista de objetos aluno
+        /*ArrayList<Amigo> minhaListaAmigo = objetoamigo.getMinhaListaAmigo();
+        for (Amigo a : minhaListaAmigo) {
+            modelo.addRow(new Object[]{
+                a.getIdAmigo(),
+                a.getNomeAmigo(),
+                a.getTelefone()
+            });
+        }*/
+    }
+    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
