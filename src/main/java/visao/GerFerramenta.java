@@ -1,14 +1,15 @@
 package visao;
+import javax.swing.JOptionPane;
 import modelo.Ferramenta;
 
 public class GerFerramenta extends javax.swing.JFrame {
-    private ListaFerramenta listaFerramenta;
     
+    private Ferramenta objetoferramenta; // cria um vínculo com a Ferramenta
     public GerFerramenta() {
-        this.listaFerramenta = listaFerramenta;
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        this.objetoferramenta = new Ferramenta(); // carrega objeto vazio de ferramenta
     }
 
     
@@ -112,18 +113,45 @@ public class GerFerramenta extends javax.swing.JFrame {
 
 //Botão Salvar
     private void BSalvarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarFActionPerformed
-        String nomeFerramenta = TFNomeF.getText();
-        String marca = TFMarcaF.getText();
-        double preco = Double.parseDouble(TFPrecoF.getText());
-        
-        Ferramenta ferramenta = new Ferramenta(nomeFerramenta, marca, preco);
-        
-        ferramenta.setNomeFerramenta(nomeFerramenta);
-        ferramenta.setMarca(marca);
-        ferramenta.setPreco(preco);
-        
-        //INCOMPLETO
-        
+        try {
+            String nomeFerramenta = "";
+            String marca = "";
+            double preco = 0.0;
+            
+            if (this.TFNomeF.getText().length() < 2) {
+                throw new Mensagem("Nome da ferramenta deve conter ao menos 2 caracteres.");
+            } else {
+                nomeFerramenta = this.TFNomeF.getText();
+            }
+            
+            if (this.TFMarcaF.getText().length() < 1) {
+                throw new Mensagem("Marca deve conter mais de 1 caractere.");
+            } else {
+                marca = this.TFMarcaF.getText();
+            }
+            
+            if (this.TFPrecoF.getText().equals("0")) {
+                throw new Mensagem("A ferramenta não pode ser grátis.");
+            } else {
+                preco = Double.parseDouble(this.TFPrecoF.getText());
+            }
+            
+            
+            // envia os dados para o Controlador cadastrar
+            if (this.objetoferramenta.insertFerramentaBD(nomeFerramenta, marca, preco)) {
+                JOptionPane.showMessageDialog(null, "Ferramenta cadastrada com sucesso!");
+                // limpa campos da interface
+                this.TFNomeF.setText("");
+                this.TFMarcaF.setText("");
+                this.TFPrecoF.setText ("");
+            }        
+            
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Apenas números.");
+        }
+
     }//GEN-LAST:event_BSalvarFActionPerformed
 
 //Botão Lista
