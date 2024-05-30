@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Amigo{
     //Atributos
-    private int idAmigo;
+    public int idAmigo;
     private String telefone;
     private String nomeAmigo;
     private AmigoDAO dao;
@@ -48,7 +48,7 @@ public class Amigo{
     
     @Override
     public String toString() {
-        return super.toString() + "nomeAmigo=" + nomeAmigo + ", telefone=" + telefone;
+        return "idAmigo" + idAmigo;
     }
     
     //Pegando os métodos de AmigoDAO

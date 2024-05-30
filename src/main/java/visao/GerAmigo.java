@@ -30,6 +30,7 @@ public class GerAmigo extends javax.swing.JFrame {
         BExcluirA = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TListaA = new javax.swing.JTable();
+        BAlterarA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Amigo");
@@ -83,32 +84,37 @@ public class GerAmigo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TListaA);
 
+        BAlterarA.setText("Alterar");
+        BAlterarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BAlterarAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(BVoltarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(BExcluirA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TFNomeA)
-                                    .addComponent(TFTelefoneA, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(BSalvarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TFNomeA)
+                            .addComponent(TFTelefoneA, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BVoltarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BSalvarA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BExcluirA, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(BAlterarA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -124,7 +130,9 @@ public class GerAmigo extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(TFTelefoneA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BSalvarA)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BSalvarA)
+                    .addComponent(BAlterarA))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BVoltarA)
@@ -220,6 +228,52 @@ public class GerAmigo extends javax.swing.JFrame {
             this.TFTelefoneA.setText(telefone);
         }
     }//GEN-LAST:event_TListaAMouseClicked
+
+    private void BAlterarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAlterarAActionPerformed
+        try {
+            int idAmigo = 0;
+            if (this.TListaA.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione um amigo para ALTERAR");
+            } else {
+                idAmigo = Integer.parseInt(this.TListaA.getValueAt(this.TListaA.getSelectedRow(), 0).toString());
+            }
+            
+            String nomeAmigo = "";
+            String telefone = "";
+            
+            if (this.TFNomeA.getText().length() < 2) {
+                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nomeAmigo = this.TFNomeA.getText();
+            }
+            
+            if (this.TFTelefoneA.getText().length() < 8) {
+                throw new Mensagem("Idade deve ser número e maior que zero.");
+            } else {
+                telefone = this.TFTelefoneA.getText();
+            }
+            
+            // envia os dados para o Controlador cadastrar
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja alterar este Amigo ?");
+
+            if (respostaUsuario == 0) {// clicou em SIM
+                // envia os dados para o Aluno processar
+                if (this.objetoamigo.updateAmigoBD(idAmigo, nomeAmigo, telefone)) {
+                    // limpa os campos
+                    this.TFNomeA.setText("");
+                    this.TFTelefoneA.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Amigo alterado com sucesso!");
+                }
+            }
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+        } finally{
+            //Atualiza a tabela
+            carregaLista();
+        }
+    }//GEN-LAST:event_BAlterarAActionPerformed
     
     public void carregaLista() {
         DefaultTableModel modelo = (DefaultTableModel) this.TListaA.getModel();
@@ -270,6 +324,7 @@ public class GerAmigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BAlterarA;
     private javax.swing.JButton BExcluirA;
     private javax.swing.JButton BSalvarA;
     private javax.swing.JButton BVoltarA;

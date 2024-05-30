@@ -102,8 +102,12 @@ public class AmigoDAO extends BaseDAO{
         String sql = "UPDATE amigo set nomeAmigo = ?,telefone = ? WHERE idAmigo = ?";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            
+            
             stmt.setString(1, objeto.getNomeAmigo());
             stmt.setString(2, objeto.getTelefone());
+            stmt.setInt(3, objeto.getIdAmigo());
+            
             stmt.execute();
             stmt.close();
             return true;
