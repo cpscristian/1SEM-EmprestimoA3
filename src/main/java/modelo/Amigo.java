@@ -10,14 +10,13 @@ public class Amigo{
     private String nomeAmigo;
     private AmigoDAO dao;
     
-    private static int idCounter = 0;//O id é preenchido automaticamente
 
     public Amigo(){
-        this("","");
+        this(0,"","");
     }
     
-    public Amigo(String nome, String telefone) {
-        this.idAmigo = ++idCounter;
+    public Amigo(int idAmigo, String nome, String telefone) {
+        this.idAmigo = idAmigo;
         this.nomeAmigo = nome;
         this.telefone = telefone;
         this.dao = new AmigoDAO();
@@ -63,7 +62,7 @@ public class Amigo{
     
     public boolean insertAmigoBD(String nomeAmigo, String telefone) {
         int idAmigo = this.maiorIDAmigo() + 1;
-        Amigo objeto = new Amigo(nomeAmigo, telefone);
+        Amigo objeto = new Amigo(idAmigo, nomeAmigo, telefone);
         dao.insertAmigoBD(objeto);
         return true;
     }
@@ -77,8 +76,8 @@ public class Amigo{
         return true;
     }
     
-    public boolean updateAmigoBD(String nomeAmigo, String telefone) {
-        Amigo objeto = new Amigo(nomeAmigo, telefone);
+    public boolean updateAmigoBD(int idAmigo, String nomeAmigo, String telefone) {
+        Amigo objeto = new Amigo(idAmigo, nomeAmigo, telefone);
         dao.updateAmigoBD(objeto);
         return true;
     }

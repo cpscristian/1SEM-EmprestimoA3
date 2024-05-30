@@ -18,9 +18,10 @@ public class AmigoDAO extends BaseDAO{
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM amigo");
             while (res.next()) {
+                int idAmigo = res.getInt("idAmigo");
                 String nomeAmigo = res.getString("nomeAmigo");
                 String telefone = res.getString("telefone");
-                Amigo objeto = new Amigo(nomeAmigo, telefone);
+                Amigo objeto = new Amigo(idAmigo, nomeAmigo, telefone);
                 minhaListaAmigo.add(objeto);
             }
             res.close();
@@ -89,6 +90,7 @@ public class AmigoDAO extends BaseDAO{
             Statement stmt = this.getConexao().createStatement();
             stmt.executeUpdate("DELETE FROM amigo WHERE idAmigo = " + idAmigo);
             stmt.close();
+            
         } catch (SQLException erro) {
             System.out.println("Erro:" + erro);
         }
