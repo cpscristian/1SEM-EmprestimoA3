@@ -10,15 +10,13 @@ public class Ferramenta {
     private String marca;
     private double preco;
     private FerramentaDAO dao;
-    
-    private static int idCounter = 0;//O id é preenchido automaticamente
 
     public Ferramenta(){
-        this("","",0.0);
+        this(0,"","",0.0);
     }
     
-    public Ferramenta(String nomeFerramenta, String marca, double preco) {
-        this.idFerramenta = ++idCounter;
+    public Ferramenta(int idFerramenta, String nomeFerramenta, String marca, double preco) {
+        this.idFerramenta = idFerramenta;
         this.nomeFerramenta = nomeFerramenta;
         this.marca = marca;
         this.preco = preco;
@@ -59,7 +57,7 @@ public class Ferramenta {
     
     @Override
     public String toString() {
-        return super.toString() + "nomeFerramenta= " + nomeFerramenta + "marca" + marca + ", preco=" + preco;
+        return "idFerramenta" + idFerramenta + "preco=" + preco;
     }
     
     //Pegando os métodos de FerramentaDAO
@@ -73,7 +71,7 @@ public class Ferramenta {
     
     public boolean insertFerramentaBD(String nomeFerramenta, String marca, double preco) {
         int idFerramenta = this.maiorIDFerramenta() + 1;
-        Ferramenta objeto = new Ferramenta(nomeFerramenta, marca, preco);
+        Ferramenta objeto = new Ferramenta(idFerramenta, nomeFerramenta, marca, preco);
         dao.insertFerramentaBD(objeto);
         return true;
     }
@@ -87,8 +85,8 @@ public class Ferramenta {
         return true;
     }
     
-    public boolean updateFerramentaBD(String nomeFerramenta, String marca, double preco) {
-        Ferramenta objeto = new Ferramenta(nomeFerramenta, marca, preco);
+    public boolean updateFerramentaBD(int idFerramenta, String nomeFerramenta, String marca, double preco) {
+        Ferramenta objeto = new Ferramenta(idFerramenta, nomeFerramenta, marca, preco);
         dao.updateFerramentaBD(objeto);
         return true;
     }

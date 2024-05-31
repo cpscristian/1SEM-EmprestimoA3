@@ -1,6 +1,9 @@
 package visao;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Ferramenta;
+import dao.FerramentaDAO;
 
 public class GerFerramenta extends javax.swing.JFrame {
     
@@ -10,6 +13,7 @@ public class GerFerramenta extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         this.objetoferramenta = new Ferramenta(); // carrega objeto vazio de ferramenta
+        this.carregaLista();
     }
 
     
@@ -25,7 +29,10 @@ public class GerFerramenta extends javax.swing.JFrame {
         TFMarcaF = new javax.swing.JTextField();
         TFPrecoF = new javax.swing.JTextField();
         TFNomeF = new javax.swing.JTextField();
-        BListaF = new javax.swing.JButton();
+        BAlterarF = new javax.swing.JButton();
+        BExcluirF = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TListaF = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Ferramenta");
@@ -50,55 +57,100 @@ public class GerFerramenta extends javax.swing.JFrame {
             }
         });
 
-        BListaF.setText("Lista");
-        BListaF.addActionListener(new java.awt.event.ActionListener() {
+        BAlterarF.setText("Alterar");
+        BAlterarF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BListaFActionPerformed(evt);
+                BAlterarFActionPerformed(evt);
             }
         });
+
+        BExcluirF.setText("Excluir");
+        BExcluirF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BExcluirFActionPerformed(evt);
+            }
+        });
+
+        TListaF.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome", "Marca", "Preço"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        TListaF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TListaFMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TListaF);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TFMarcaF, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFPrecoF, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BListaF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BSalvarF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BVoltarF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BSalvarF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BVoltarF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BAlterarF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BExcluirF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TFMarcaF, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TFPrecoF, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TFNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(TFNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BListaF))
+                    .addComponent(TFNomeF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(TFMarcaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BSalvarF))
+                    .addComponent(TFMarcaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TFPrecoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BVoltarF))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addComponent(TFPrecoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BSalvarF)
+                    .addComponent(BAlterarF))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BVoltarF)
+                    .addComponent(BExcluirF))
+                .addGap(41, 41, 41))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,16 +203,116 @@ public class GerFerramenta extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Apenas números.");
         }
-
+        carregaLista();
     }//GEN-LAST:event_BSalvarFActionPerformed
 
-//Botão Lista
-    private void BListaFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BListaFActionPerformed
-        ListaFerramenta janela = new ListaFerramenta();
-        janela.setVisible(true);
-        GerFerramenta.this.dispose();
-    }//GEN-LAST:event_BListaFActionPerformed
+    private void BExcluirFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirFActionPerformed
+        try {
+            // validando dados da interface gráfica.
+            int idFerramenta = 0;
+            if (this.TListaF.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione uma ferramenta para EXCLUIR");
+            } else {
+                idFerramenta = Integer.parseInt(this.TListaF.getValueAt(this.TListaF.getSelectedRow(), 0).toString());
+            }
 
+            // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esta Ferramenta ?");
+
+            if (respostaUsuario == 0) {// clicou em SIM
+                // envia os dados para o Aluno processar
+                if (this.objetoferramenta.deleteFerramentaBD(idFerramenta)) {
+                    // limpa os campos
+                    this.TFNomeF.setText("");
+                    this.TFMarcaF.setText("");
+                    this.TFPrecoF.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Ferramenta apagado com sucesso!");
+                }
+            }
+            // atualiza a tabela.
+            System.out.println(this.objetoferramenta.getMinhaListaFerramenta().toString());
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            // atualiza a tabela.
+            carregaLista();
+        }
+    }//GEN-LAST:event_BExcluirFActionPerformed
+
+    private void BAlterarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAlterarFActionPerformed
+        try {
+            int idFerramenta = 0;
+            if (this.TListaF.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione uma ferramenta para ALTERAR");
+            } else {
+                idFerramenta = Integer.parseInt(this.TListaF.getValueAt(this.TListaF.getSelectedRow(), 0).toString());
+            }
+            
+            String nomeFerramenta = "";
+            String marca = "";
+            double preco = 0.0;
+            
+            if (this.TFNomeF.getText().length() < 2) {
+                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nomeFerramenta = this.TFNomeF.getText();
+            }
+            
+            if (this.TFPrecoF.getText().equals(0)) {
+                throw new Mensagem("A ferramenta não deve ser de graça!");
+            } else {
+                preco = Double.parseDouble(this.TFPrecoF.getText());
+            }
+            
+            // envia os dados para o Controlador cadastrar
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja alterar esta Ferramenta?");
+
+            if (respostaUsuario == 0) {// clicou em SIM
+                // envia os dados para o Aluno processar
+                if (this.objetoferramenta.updateFerramentaBD(idFerramenta, nomeFerramenta, marca, preco)) {
+                    // limpa os campos
+                    this.TFNomeF.setText("");
+                    this.TFMarcaF.setText("");
+                    this.TFPrecoF.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Ferramenta alterado com sucesso!");
+                }
+            }
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+        } finally{
+            //Atualiza a tabela
+            carregaLista();
+        }
+    }//GEN-LAST:event_BAlterarFActionPerformed
+
+    private void TListaFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TListaFMouseClicked
+        if (this.TListaF.getSelectedRow() != -1) {
+            String nomeFerramenta = this.TListaF.getValueAt(this.TListaF.getSelectedRow(), 1).toString();
+            String marca = this.TListaF.getValueAt(this.TListaF.getSelectedRow(), 2).toString();
+            double preco = Double.parseDouble(this.TListaF .getValueAt(this.TListaF.getSelectedRow(), 3).toString());
+
+            this.TFNomeF.setText(nomeFerramenta);
+            this.TFMarcaF.setText(marca);
+            this.TFPrecoF.setText(String.valueOf(preco));
+        }
+    }//GEN-LAST:event_TListaFMouseClicked
+public void carregaLista() {
+        DefaultTableModel modelo = (DefaultTableModel) this.TListaF.getModel();
+        modelo.setNumRows(0); // Posiciona na primeira linha da tabela
+        // Carrega a lista de objetos aluno
+        ArrayList<Ferramenta> minhaListaFerramenta = objetoferramenta.getMinhaListaFerramenta();
+        for (Ferramenta a : minhaListaFerramenta) {
+            modelo.addRow(new Object[]{
+                a.getIdFerramenta(),
+                a.getNomeFerramenta(),
+                a.getMarca(),
+                a.getPreco()
+            });
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -197,14 +349,17 @@ public class GerFerramenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BListaF;
+    private javax.swing.JButton BAlterarF;
+    private javax.swing.JButton BExcluirF;
     private javax.swing.JButton BSalvarF;
     private javax.swing.JButton BVoltarF;
     private javax.swing.JTextField TFMarcaF;
     private javax.swing.JTextField TFNomeF;
     private javax.swing.JTextField TFPrecoF;
+    private javax.swing.JTable TListaF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

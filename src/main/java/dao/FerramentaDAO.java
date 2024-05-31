@@ -18,10 +18,11 @@ public class FerramentaDAO extends BaseDAO {
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM ferramenta");
             while (res.next()) {
+                int idFerramenta = res.getInt("idFerramenta");
                 String nomeFerramenta = res.getString("nomeFerramenta");
                 String marca = res.getString("marca");
                 double preco = res.getDouble("preco");
-                Ferramenta objeto = new Ferramenta(nomeFerramenta, marca, preco);
+                Ferramenta objeto = new Ferramenta(idFerramenta, nomeFerramenta, marca, preco);
                 minhaListaFerramenta.add(objeto);
             }
             res.close();
@@ -103,9 +104,12 @@ public class FerramentaDAO extends BaseDAO {
         String sql = "UPDATE ferramenta set nomeFerramenta = ?,marca = ? ,preco = ? WHERE idFerramenta = ?";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            
             stmt.setString(1, objeto.getNomeFerramenta());
-            stmt.setString(3, objeto.getMarca());
-            stmt.setDouble(5, objeto.getPreco());
+            stmt.setString(2, objeto.getMarca());
+            stmt.setDouble(3, objeto.getPreco());
+            stmt.setInt(4, objeto.getIdFerramenta());
+            
             stmt.execute();
             stmt.close();
             return true;
