@@ -21,3 +21,11 @@ Projeto feito para a A3 no primeiro semestre da nossa faculdade.
 - RNF002 O sistema deve rodar em Java (1.8.0_241) .
 - RNF003 O sistema deve rodar no sistema operacional Windows 10 e 11.
 - RNF004 O sistema deve ser atribuído a um banco de dados do MySQL 8.0.36
+
+## Configurações do BD:
+
+- Servidor = "localhost"
+- Nome do banco de dados = "emprestimoa3"
+- Url = "jdbc:mysql://localhost:3306/emprestimoa3?useTimezone=true&serverTimezone=UTC"
+- Usuário = "root"
+- Senha = "senhadosql18%", se for no servidor do computador da Unisul, "Unisul@1520"
