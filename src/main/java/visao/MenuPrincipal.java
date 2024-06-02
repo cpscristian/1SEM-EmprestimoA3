@@ -17,7 +17,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BGerF = new javax.swing.JButton();
         BGerA = new javax.swing.JButton();
         BGerE = new javax.swing.JButton();
-        BHistorico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -53,13 +52,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        BHistorico.setText("Histórico");
-        BHistorico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BHistoricoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,31 +61,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(BGerE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BGerA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BGerF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)))
+                            .addComponent(jLabel1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(BGerE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BGerA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BGerF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(8, 8, 8))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(BFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(89, 89, 89))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(BGerF)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addComponent(BGerA)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(BGerE)
-                .addGap(18, 18, 18)
-                .addComponent(BHistorico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(BFechar)
                 .addGap(15, 15, 15))
         );
@@ -122,12 +113,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerEActionPerformed
-
-    private void BHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BHistoricoActionPerformed
-        JHistorico janela = new JHistorico();
-        janela.setVisible(true);
-        MenuPrincipal.this.dispose();
-    }//GEN-LAST:event_BHistoricoActionPerformed
 
     public static void main(String args[]) {
         
@@ -163,7 +148,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BGerA;
     private javax.swing.JButton BGerE;
     private javax.swing.JButton BGerF;
-    private javax.swing.JButton BHistorico;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

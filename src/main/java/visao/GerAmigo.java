@@ -2,7 +2,6 @@ package visao;
 
 import java.util.ArrayList;
 import modelo.Amigo;
-import dao.AmigoDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
