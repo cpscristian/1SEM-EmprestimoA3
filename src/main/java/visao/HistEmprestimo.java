@@ -1,6 +1,7 @@
 package visao;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Emprestimo;
 
@@ -34,6 +35,11 @@ public class HistEmprestimo extends javax.swing.JFrame {
         });
 
         BExcluirHE.setText("Excluir");
+        BExcluirHE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BExcluirHEActionPerformed(evt);
+            }
+        });
 
         THistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,6 +61,11 @@ public class HistEmprestimo extends javax.swing.JFrame {
 
         BDevolvido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BDevolvido.setText("Marcar como devolvido");
+        BDevolvido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BDevolvidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +109,20 @@ public class HistEmprestimo extends javax.swing.JFrame {
         janela.setVisible(true);
         HistEmprestimo.this.dispose();
     }//GEN-LAST:event_BVoltarHEActionPerformed
+
+    private void BExcluirHEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirHEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BExcluirHEActionPerformed
+
+    private void BDevolvidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDevolvidoActionPerformed
+        int selectedRow = THistorico.getSelectedRow();
+
+        if (selectedRow != -1) {
+            THistorico.setValueAt("Devolvido", selectedRow, 5);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um empréstimo para marcar como devolvido.");
+        }
+    }//GEN-LAST:event_BDevolvidoActionPerformed
     
     public void carregaHistorico() {
         DefaultTableModel modelo = (DefaultTableModel) this.THistorico.getModel();
@@ -106,7 +131,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
         ArrayList<Emprestimo> minhaListaEmprestimo = objetoemprestimo.getMinhaListaEmprestimo();
         for (Emprestimo a : minhaListaEmprestimo) {
             modelo.addRow(new Object[]{
-//                a.getIdEmprestimo(),
+                a.getIdEmprestimo(),
                 a.getIdAmigoEmprestimo(),
                 a.getIdFerramentaEmprestimo(),
                 a.getDataInicio(),

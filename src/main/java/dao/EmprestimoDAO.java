@@ -18,12 +18,13 @@ public class EmprestimoDAO extends BaseDAO {
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT * FROM emprestimo");
             while (res.next()) {
+                int idEmprestimo = res.getInt("idEmprestimo");
                 int idAmigoEmprestimo = res.getInt("idAmigoEmprestimo");
                 int idFerramentaEmprestimo = res.getInt("idFerramentaEmprestimo");
                 LocalDate dataInicio = res.getDate("dataInicio").toLocalDate();
                 LocalDate dataDevolucao = res.getDate("dataDevolucao").toLocalDate();
                 boolean status = res.getBoolean("status");
-                Emprestimo objeto = new Emprestimo(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status);
+                Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status);
                 minhaListaEmprestimo.add(objeto);
             }
             res.close();
