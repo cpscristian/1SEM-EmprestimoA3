@@ -164,7 +164,7 @@ public class GerAmigo extends javax.swing.JFrame {
             }
             
             if (this.TFTelefoneA.getText().length() < 8) {
-                throw new Mensagem("Idade deve ser número e maior que zero.");
+                throw new Mensagem("Insita um número válido.");
             } else {
                 telefone = this.TFTelefoneA.getText();
             }

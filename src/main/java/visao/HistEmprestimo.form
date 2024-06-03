@@ -92,7 +92,7 @@
                 <Column editable="true" title="ID da Ferramenta" type="java.lang.Integer"/>
                 <Column editable="true" title="Data de in&#xed;cio" type="java.lang.String"/>
                 <Column editable="true" title="Data de devolu&#xe7;&#xe3;o" type="java.lang.String"/>
-                <Column editable="true" title="Status" type="java.lang.String"/>
+                <Column editable="true" title="Status" type="java.lang.Boolean"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

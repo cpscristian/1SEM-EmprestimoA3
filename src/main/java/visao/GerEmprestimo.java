@@ -49,6 +49,8 @@ public class GerEmprestimo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        TFDataDevolucaoE = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -134,6 +136,8 @@ public class GerEmprestimo extends javax.swing.JFrame {
 
         jLabel5.setText("ID da Ferramenta");
 
+        jLabel6.setText("Data de devolução:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,9 +161,6 @@ public class GerEmprestimo extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
@@ -172,7 +173,14 @@ public class GerEmprestimo extends javax.swing.JFrame {
                                         .addComponent(TFIDAmigoE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(TFIDFerramentaE, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(TFIDFerramentaE, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TFDataDevolucaoE)))))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -200,7 +208,11 @@ public class GerEmprestimo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TFDataInicioE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(66, 66, 66)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(TFDataDevolucaoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
                         .addComponent(BSalvarE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -229,8 +241,8 @@ public class GerEmprestimo extends javax.swing.JFrame {
     private void BSalvarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarEActionPerformed
             int idAmigoEmprestimo = 0;
             int idFerramentaEmprestimo = 0;
-            LocalDate dataInicio = null;
-            LocalDate dataDevolucao = null;
+            LocalDate dataInicio = LocalDate.of(1970,1,1);
+            LocalDate dataDevolucao = LocalDate.of(1970,1,1);
         
             if (this.objetoemprestimo.insertEmprestimoBD(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao)) {
                     JOptionPane.showMessageDialog(null, "Empréstimo cadastrado com Sucesso!");
@@ -322,6 +334,7 @@ public class GerEmprestimo extends javax.swing.JFrame {
     private javax.swing.JButton BHistoricoE;
     private javax.swing.JButton BSalvarE;
     private javax.swing.JButton BVoltarE;
+    private javax.swing.JTextField TFDataDevolucaoE;
     private javax.swing.JTextField TFDataInicioE;
     private javax.swing.JTextField TFIDAmigoE;
     private javax.swing.JTextField TFIDFerramentaE;
@@ -333,6 +346,7 @@ public class GerEmprestimo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

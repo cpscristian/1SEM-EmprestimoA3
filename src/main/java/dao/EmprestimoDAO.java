@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import modelo.Amigo;
 import modelo.Emprestimo;
 
 public class EmprestimoDAO extends BaseDAO {
@@ -17,14 +16,15 @@ public class EmprestimoDAO extends BaseDAO {
         
         try {
             Statement stmt = this.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM amigo");
+            ResultSet res = stmt.executeQuery("SELECT * FROM emprestimo");
             while (res.next()) {
                 int idEmprestimo = res.getInt("idEmprestimo");
                 int idAmigoEmprestimo = res.getInt("idAmigoEmprestimo");
                 int idFerramentaEmprestimo = res.getInt("idFerramentaEmprestimo");
                 LocalDate dataInicio = res.getDate("dataInicio").toLocalDate();
                 LocalDate dataDevolucao = res.getDate("dataDevolucao").toLocalDate();
-                Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao);
+                boolean status = res.getBoolean("status");
+                Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status);
                 minhaListaEmprestimo.add(objeto);
             }
             res.close();
@@ -40,23 +40,15 @@ public class EmprestimoDAO extends BaseDAO {
     }
     
     public boolean insertEmprestimoBD(Emprestimo objeto) {
+        //Inserindo 
         String sql = "INSERT INTO emprestimo(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao) VALUES(?,?,?,?)";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             
             stmt.setInt(1, objeto.getIdAmigoEmprestimo());
             stmt.setInt(2, objeto.getIdFerramentaEmprestimo());
-            
-            if (objeto.getDataInicio() != null) {
-                stmt.setDate(3, Date.valueOf(objeto.getDataInicio()));
-            } else {
-                stmt.setNull(3, java.sql.Types.DATE);
-            }
-            if (objeto.getDataDevolucao() != null) {
-                stmt.setDate(4, Date.valueOf(objeto.getDataDevolucao()));
-            } else {
-                stmt.setNull(4, java.sql.Types.DATE);
-            }
+            stmt.setDate(3, Date.valueOf(objeto.getDataInicio()));
+            stmt.setDate(4, Date.valueOf(objeto.getDataDevolucao()));
             
             stmt.execute();
             stmt.close();

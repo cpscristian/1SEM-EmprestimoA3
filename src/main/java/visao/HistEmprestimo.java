@@ -44,7 +44,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -110,7 +110,8 @@ public class HistEmprestimo extends javax.swing.JFrame {
                 a.getIdAmigoEmprestimo(),
                 a.getIdFerramentaEmprestimo(),
                 a.getDataInicio(),
-                a.getDataDevolucao()
+                a.getDataDevolucao(),
+                a.isStatus()
             });
         }
     }

@@ -11,18 +11,20 @@ public class Emprestimo {
     private int idFerramentaEmprestimo;
     private LocalDate dataInicio;
     private LocalDate dataDevolucao;
+    private boolean status;
     private EmprestimoDAO dao;
 
     public Emprestimo(){
-        this(0,0,0,null,null);
+        this(0,0,0,LocalDate.of(1970, 1, 1),LocalDate.of(1970, 1, 1),false);
     }
 
-    public Emprestimo(int idEmprestimo, int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao) {
+    public Emprestimo(int idEmprestimo, int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao, boolean status) {
         this.idEmprestimo = idEmprestimo;
         this.idAmigoEmprestimo = idAmigoEmprestimo;
         this.idFerramentaEmprestimo = idFerramentaEmprestimo;
         this.dataInicio = dataInicio;
         this.dataDevolucao = dataDevolucao;
+        this.status = status;
         this.dao = new EmprestimoDAO();
     }
     
@@ -66,9 +68,18 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
     
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
     @Override
     public String toString() {
-        return "idEmprestimo" + idEmprestimo + "idAmigoEmprestimo" + idAmigoEmprestimo + "idFerramentaEmprestimo" + idFerramentaEmprestimo;
+        return "idEmprestimo" + idEmprestimo + "idAmigoEmprestimo" + idAmigoEmprestimo + "idFerramentaEmprestimo" + idFerramentaEmprestimo 
+                + "dataInicio" + dataInicio + "dataDevolucao" + dataDevolucao + "status" + status;
     }
     
     //Pegando os métodos de EmprestimoDAO
@@ -78,7 +89,7 @@ public class Emprestimo {
     
     public boolean insertEmprestimoBD(int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao) {
         int idEmprestimo = this.maiorIDEmprestimo() + 1;
-        Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao);
+        Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status);
         dao.insertEmprestimoBD(objeto);
         return true;
     }
