@@ -251,6 +251,7 @@ public class GerEmprestimo extends javax.swing.JFrame {
                     this.TFIDAmigoE.setText("");
                     this.TFIDFerramentaE.setText("");
                     this.TFDataInicioE.setText("");
+                    this.TFDataDevolucaoE.setText("");
             }
     }//GEN-LAST:event_BSalvarEActionPerformed
 

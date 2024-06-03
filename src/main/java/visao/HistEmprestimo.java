@@ -102,7 +102,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
     public void carregaHistorico() {
         DefaultTableModel modelo = (DefaultTableModel) this.THistorico.getModel();
         modelo.setNumRows(0); // Posiciona na primeira linha da tabela
-        // Carrega a lista de objetos aluno
+        // Carrega a lista de objetos emprestimo
         ArrayList<Emprestimo> minhaListaEmprestimo = objetoemprestimo.getMinhaListaEmprestimo();
         for (Emprestimo a : minhaListaEmprestimo) {
             modelo.addRow(new Object[]{
