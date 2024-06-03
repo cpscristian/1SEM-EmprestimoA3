@@ -106,7 +106,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
         ArrayList<Emprestimo> minhaListaEmprestimo = objetoemprestimo.getMinhaListaEmprestimo();
         for (Emprestimo a : minhaListaEmprestimo) {
             modelo.addRow(new Object[]{
-                a.getIdEmprestimo(),
+//                a.getIdEmprestimo(),
                 a.getIdAmigoEmprestimo(),
                 a.getIdFerramentaEmprestimo(),
                 a.getDataInicio(),

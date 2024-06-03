@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Emprestimo {
     //Atributos
-    private int idEmprestimo;
+
     private int idAmigoEmprestimo;
     private int idFerramentaEmprestimo;
     private LocalDate dataInicio;
@@ -15,11 +15,11 @@ public class Emprestimo {
     private EmprestimoDAO dao;
 
     public Emprestimo(){
-        this(0,0,0,LocalDate.of(1970, 1, 1),LocalDate.of(1970, 1, 1),false);
+        this(0,0,LocalDate.of(1970, 1, 1),LocalDate.of(1970, 1, 1),false);
     }
 
-    public Emprestimo(int idEmprestimo, int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao, boolean status) {
-        this.idEmprestimo = idEmprestimo;
+    public Emprestimo(int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao, boolean status) {
+
         this.idAmigoEmprestimo = idAmigoEmprestimo;
         this.idFerramentaEmprestimo = idFerramentaEmprestimo;
         this.dataInicio = dataInicio;
@@ -28,13 +28,7 @@ public class Emprestimo {
         this.dao = new EmprestimoDAO();
     }
     
-    public int getIdEmprestimo() {
-        return idEmprestimo;
-    }
-    
-    public void setIdEmprestimo(int idEmprestimo) {
-        this.idEmprestimo = idEmprestimo;
-    }
+
     
     public int getIdAmigoEmprestimo() {
         return idAmigoEmprestimo;
@@ -78,7 +72,7 @@ public class Emprestimo {
     
     @Override
     public String toString() {
-        return "idEmprestimo" + idEmprestimo + "idAmigoEmprestimo" + idAmigoEmprestimo + "idFerramentaEmprestimo" + idFerramentaEmprestimo 
+        return "idAmigoEmprestimo" + idAmigoEmprestimo + "idFerramentaEmprestimo" + idFerramentaEmprestimo 
                 + "dataInicio" + dataInicio + "dataDevolucao" + dataDevolucao + "status" + status;
     }
     
@@ -88,8 +82,8 @@ public class Emprestimo {
     }
     
     public boolean insertEmprestimoBD(int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao) {
-        int idEmprestimo = this.maiorIDEmprestimo() + 1;
-        Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status);
+//        int idEmprestimo = this.maiorIDEmprestimo() + 1;
+        Emprestimo objeto = new Emprestimo(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status);
         dao.insertEmprestimoBD(objeto);
         return true;
     }

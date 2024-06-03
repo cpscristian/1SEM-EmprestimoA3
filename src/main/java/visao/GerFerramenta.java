@@ -246,9 +246,8 @@ public class GerFerramenta extends javax.swing.JFrame {
             } else {
                 idFerramenta = Integer.parseInt(this.TListaF.getValueAt(this.TListaF.getSelectedRow(), 0).toString());
             }
-            
+            String marca = this.TFMarcaF.getText();
             String nomeFerramenta = "";
-            String marca = "";
             double preco = 0.0;
             
             if (this.TFNomeF.getText().length() < 2) {

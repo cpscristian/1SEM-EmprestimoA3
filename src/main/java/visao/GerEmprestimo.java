@@ -239,10 +239,11 @@ public class GerEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_BVoltarEActionPerformed
 
     private void BSalvarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarEActionPerformed
-            int idAmigoEmprestimo = 0;
-            int idFerramentaEmprestimo = 0;
+            int idAmigoEmprestimo = Integer.parseInt(TFIDAmigoE.getText());
+            int idFerramentaEmprestimo = Integer.parseInt(TFIDFerramentaE.getText());
             LocalDate dataInicio = LocalDate.of(1970,1,1);
             LocalDate dataDevolucao = LocalDate.of(1970,1,1);
+            
         
             if (this.objetoemprestimo.insertEmprestimoBD(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao)) {
                     JOptionPane.showMessageDialog(null, "Empréstimo cadastrado com Sucesso!");
