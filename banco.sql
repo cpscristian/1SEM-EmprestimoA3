@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `emprestimoa3`.`ferramenta` (
   `preco` DOUBLE NULL DEFAULT NULL,
   PRIMARY KEY (`idFerramenta`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
 
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `emprestimoa3`.`amigo` (
   `telefone` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`idAmigo`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
+AUTO_INCREMENT = 15
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
 
@@ -36,6 +36,6 @@ CREATE TABLE IF NOT EXISTS `emprestimoa3`.`emprestimo` (
     FOREIGN KEY (`idFerramentaEmprestimo`)
     REFERENCES `emprestimoa3`.`ferramenta` (`idFerramenta`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
+AUTO_INCREMENT = 18
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci
