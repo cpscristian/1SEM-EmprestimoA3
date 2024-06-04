@@ -3,6 +3,8 @@ package visao;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.Amigo;
 import modelo.Emprestimo;
@@ -270,7 +272,7 @@ public class GerEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_TListaAEMouseClicked
 
     private void TListaFEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TListaFEMouseClicked
-        if (this.TListaFE.getSelectedRow() != -1) {
+            if (this.TListaFE.getSelectedRow() != -1) {
             String idFerramenta = this.TListaFE.getValueAt(this.TListaFE.getSelectedRow(), 0).toString();
 
             this.TFIDFerramentaE.setText(idFerramenta);
@@ -289,6 +291,13 @@ public class GerEmprestimo extends javax.swing.JFrame {
                 a.getTelefone()
             });
         }
+        //Centraliza as colunas
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < TListaAE.getColumnCount(); i++) {
+            TListaAE.getColumnModel().getColumn(i).setCellRenderer(centralizado);
+        }
     }
     
     public void carregaListaFerramenta() {
@@ -303,6 +312,13 @@ public class GerEmprestimo extends javax.swing.JFrame {
                 a.getMarca(),
                 a.getPreco()
             });
+        }
+        //Centraliza as colunas
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < TListaFE.getColumnCount(); i++) {
+            TListaFE.getColumnModel().getColumn(i).setCellRenderer(centralizado);
         }
     }
     public static void main(String args[]) {

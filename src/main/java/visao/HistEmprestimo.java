@@ -2,6 +2,8 @@ package visao;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.Emprestimo;
 
@@ -50,7 +52,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -60,7 +62,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(THistorico);
 
         BDevolvido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BDevolvido.setText("Marcar como devolvido");
+        BDevolvido.setText("Marcar como devolvido/ativo");
         BDevolvido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BDevolvidoActionPerformed(evt);
@@ -71,10 +73,6 @@ public class HistEmprestimo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BDevolvido)
-                .addGap(272, 272, 272))
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,6 +84,10 @@ public class HistEmprestimo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BExcluirHE)
                         .addGap(16, 16, 16))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(258, 258, 258)
+                .addComponent(BDevolvido)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,14 +113,45 @@ public class HistEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_BVoltarHEActionPerformed
 
     private void BExcluirHEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirHEActionPerformed
-        // TODO add your handling code here:
+            try {
+            int idEmprestimo = 0;
+            if (this.THistorico.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione um amigo para EXCLUIR");
+            } else {
+                idEmprestimo = Integer.parseInt(this.THistorico.getValueAt(this.THistorico.getSelectedRow(), 0).toString());
+            }
+
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar este Emprestimo ?");
+
+            if (respostaUsuario == 0) {// clicou em SIM
+                // envia os dados para o Aluno processar
+                if (this.objetoemprestimo.deleteEmprestimoBD(idEmprestimo)) {
+                    JOptionPane.showMessageDialog(rootPane, "Amigo apagado com sucesso!");
+                }
+            }
+        } catch (Mensagem erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            // atualiza a tabela.
+            carregaHistorico();
+        }
     }//GEN-LAST:event_BExcluirHEActionPerformed
 
     private void BDevolvidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDevolvidoActionPerformed
         int selectedRow = THistorico.getSelectedRow();
 
         if (selectedRow != -1) {
-            THistorico.setValueAt("Devolvido", selectedRow, 5);
+            DefaultTableModel model = (DefaultTableModel) THistorico.getModel();
+            String status = (String) model.getValueAt(selectedRow, 5);
+        
+        // Alternar entre "ativo" e "devolvido"
+        if (status.equals("Ativo")) {
+            model.setValueAt("Devolvido", selectedRow, 5);
+            objetoemprestimo.updateStatusEmprestimoBD((int) model.getValueAt(selectedRow, 0), true);
+        } else if (status.equals("Devolvido")) {
+            model.setValueAt("Ativo", selectedRow, 5);
+            objetoemprestimo.updateStatusEmprestimoBD((int) model.getValueAt(selectedRow, 0), false);
+        }
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um empréstimo para marcar como devolvido.");
         }
@@ -136,10 +169,18 @@ public class HistEmprestimo extends javax.swing.JFrame {
                 a.getIdFerramentaEmprestimo(),
                 a.getDataInicio(),
                 a.getDataDevolucao(),
-                a.isStatus()
+                a.isStatus() ? "Devolvido" : "Ativo"
             });
         }
+        //Centraliza as colunas
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < THistorico.getColumnCount(); i++) {
+            THistorico.getColumnModel().getColumn(i).setCellRenderer(centralizado);
+        }
     }
+    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -1,6 +1,8 @@
 package visao;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.Ferramenta;
 
@@ -308,6 +310,13 @@ public void carregaLista() {
                 a.getMarca(),
                 a.getPreco()
             });
+        }
+        //Centraliza as colunas
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < TListaF.getColumnCount(); i++) {
+            TListaF.getColumnModel().getColumn(i).setCellRenderer(centralizado);
         }
     }
     

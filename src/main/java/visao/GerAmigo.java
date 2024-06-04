@@ -3,6 +3,8 @@ package visao;
 import java.util.ArrayList;
 import modelo.Amigo;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class GerAmigo extends javax.swing.JFrame {
@@ -285,6 +287,13 @@ public class GerAmigo extends javax.swing.JFrame {
                 a.getNomeAmigo(),
                 a.getTelefone()
             });
+        }
+        //Centraliza as colunas
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < TListaA.getColumnCount(); i++) {
+            TListaA.getColumnModel().getColumn(i).setCellRenderer(centralizado);
         }
     }
     public static void main(String args[]) {

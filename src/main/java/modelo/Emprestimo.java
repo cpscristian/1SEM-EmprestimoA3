@@ -15,7 +15,7 @@ public class Emprestimo {
     private EmprestimoDAO dao;
 
     public Emprestimo(){
-        this(0,0,0,LocalDate.of(1970, 1, 1),LocalDate.of(1970, 1, 1),false);
+        this(0,0,0,LocalDate.of(1970, 1, 1),LocalDate.of(1970, 1, 1),true);
     }
 
     public Emprestimo(int idEmprestimo, int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao, boolean status) {
@@ -100,6 +100,10 @@ public class Emprestimo {
     
     public boolean deleteEmprestimoBD(int idEmprestimo) {
         dao.deleteEmprestimoBD(idEmprestimo);
+        return true;
+    }
+    public boolean updateStatusEmprestimoBD(int idEmprestimo, boolean status){
+        dao.updateStatusEmprestimoBD(idEmprestimo, status);
         return true;
     }
 }

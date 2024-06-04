@@ -41,7 +41,7 @@ public class EmprestimoDAO extends BaseDAO {
     
     public boolean insertEmprestimoBD(Emprestimo objeto) {
         //Inserindo 
-        String sql = "INSERT INTO emprestimo(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO emprestimo(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             
@@ -49,6 +49,7 @@ public class EmprestimoDAO extends BaseDAO {
             stmt.setInt(2, objeto.getIdFerramentaEmprestimo());
             stmt.setDate(3, Date.valueOf(objeto.getDataInicio()));
             stmt.setDate(4, Date.valueOf(objeto.getDataDevolucao()));
+            stmt.setBoolean(5, true);
             
             stmt.execute();
             stmt.close();
@@ -86,4 +87,23 @@ public class EmprestimoDAO extends BaseDAO {
         }
         return true;
     }
+    
+    //Atualiza o status
+    public boolean updateStatusEmprestimoBD(int idEmprestimo, boolean status) {
+        String sql = "UPDATE emprestimo SET status = ? WHERE idEmprestimo = ?";
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            
+            stmt.setBoolean(1, status);
+            stmt.setInt(2, idEmprestimo);
+            
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+            throw new RuntimeException(erro);
+        }
+        return true;
+    }
+
 }
