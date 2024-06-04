@@ -90,6 +90,8 @@ public class FerramentaDAO extends BaseDAO {
     // Deleta uma ferramenta específica pelo seu campo ID
     public boolean deleteFerramentaBD(int idFerramenta) {
         try {
+            
+            
             Statement stmt = this.getConexao().createStatement();
             stmt.executeUpdate("DELETE FROM ferramenta WHERE idFerramenta = " + idFerramenta);
             stmt.close();

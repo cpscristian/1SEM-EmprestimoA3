@@ -1,4 +1,4 @@
-package visao.relatorios;
+package visao;
 
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -102,21 +102,39 @@ public class MenuRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_BVoltarRActionPerformed
 
     private void BFerramentasRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFerramentasRActionPerformed
-        JTextArea textArea = new JTextArea(3,30);
-        textArea.setText("Mensagem /nABABABA");
+        GerFerramenta gerFerramenta = new GerFerramenta(); // Instancia a classe GerFerramenta
+        String data = gerFerramenta.getTableData(); // Obtém os dados da tabela
+
+        JTextArea textArea = new JTextArea(30,50);
         textArea.setEditable(true);
-        
+        textArea.setText(data); // Define o texto no JTextArea
         JScrollPane painelRolagem = new JScrollPane(textArea);
-        
-        JOptionPane.showMessageDialog(null,painelRolagem,"Mensagem", JOptionPane.WARNING_MESSAGE);
+    
+        JOptionPane.showMessageDialog(null, painelRolagem, "Relatório de Ferramentas", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BFerramentasRActionPerformed
 
     private void BAmigosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAmigosRActionPerformed
-        //TODO add your code here
+        GerAmigo gerAmigo = new GerAmigo(); // Instancia a classe GerAmigo
+        String data = gerAmigo.getTableData(); // Obtém os dados da tabela
+
+        JTextArea textArea = new JTextArea(30,50);
+        textArea.setEditable(true);
+        textArea.setText(data); // Define o texto no JTextArea
+        JScrollPane painelRolagem = new JScrollPane(textArea);
+    
+        JOptionPane.showMessageDialog(null, painelRolagem, "Relatório de Amigos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BAmigosRActionPerformed
 
     private void BEmprestimosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEmprestimosRActionPerformed
-        //TODO add your code here
+        HistEmprestimo HistEmprestimo = new HistEmprestimo(); // Instancia a classe HistEmprestimo
+        String data = HistEmprestimo.getTableData(); // Obtém os dados da tabela
+
+        JTextArea textArea = new JTextArea(30,60);
+        textArea.setEditable(true);
+        textArea.setText(data); // Define o texto no JTextArea
+        JScrollPane painelRolagem = new JScrollPane(textArea);
+    
+        JOptionPane.showMessageDialog(null, painelRolagem, "Relatório de Amigos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BEmprestimosRActionPerformed
 
     public static void main(String args[]) {

@@ -238,6 +238,7 @@ public class GerFerramenta extends javax.swing.JFrame {
             // atualiza a tabela.
             carregaLista();
         }
+        
     }//GEN-LAST:event_BExcluirFActionPerformed
 
     private void BAlterarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAlterarFActionPerformed
@@ -298,7 +299,7 @@ public class GerFerramenta extends javax.swing.JFrame {
             this.TFPrecoF.setText(String.valueOf(preco));
         }
     }//GEN-LAST:event_TListaFMouseClicked
-public void carregaLista() {
+    public void carregaLista() {
         DefaultTableModel modelo = (DefaultTableModel) this.TListaF.getModel();
         modelo.setNumRows(0); // Posiciona na primeira linha da tabela
         // Carrega a lista de objetos aluno
@@ -318,6 +319,22 @@ public void carregaLista() {
         for (int i = 0; i < TListaF.getColumnCount(); i++) {
             TListaF.getColumnModel().getColumn(i).setCellRenderer(centralizado);
         }
+    }
+
+    public String getTableData() {
+    StringBuilder data = new StringBuilder();
+    // Adiciona cabeçalhos
+    data.append(String.format("%-40s %-40s %-40s %-40s\n", "ID", "Nome", "Marca", "Preço"));
+    data.append("------------------------------------------------------------------------------------------------------------------\n");
+    // Adiciona dados da tabela
+    for (int i = 0; i < TListaF.getRowCount(); i++) {
+        data.append(String.format("%-40s %-40s %-40s %-40s\n", 
+            TListaF.getValueAt(i, 0).toString(), 
+            TListaF.getValueAt(i, 1).toString(), 
+            TListaF.getValueAt(i, 2).toString(), 
+            TListaF.getValueAt(i, 3).toString()));
+    }
+    return data.toString();
     }
     
     public static void main(String args[]) {
@@ -352,7 +369,7 @@ public void carregaLista() {
             public void run() {
                 new GerFerramenta().setVisible(true);
             }
-        });
+        }); 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

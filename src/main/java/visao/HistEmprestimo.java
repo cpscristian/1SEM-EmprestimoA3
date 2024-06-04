@@ -181,6 +181,24 @@ public class HistEmprestimo extends javax.swing.JFrame {
         }
     }
     
+    public String getTableData() {
+    StringBuilder data = new StringBuilder();
+    // Adiciona cabeçalhos
+    data.append(String.format("%-40s %-40s %-40s %-40s %-40s %-40s\n", "ID", "ID do amigo", "ID da ferramenta", "Data de início","Data de devolução", "Status"));
+    data.append("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    // Adiciona dados da tabela
+    for (int i = 0; i < THistorico.getRowCount(); i++) {
+        data.append(String.format("%-40s %-60s %-40s %-40s %-40s %-40s\n", 
+            THistorico.getValueAt(i, 0).toString(), 
+            THistorico.getValueAt(i, 1).toString(), 
+            THistorico.getValueAt(i, 2).toString(), 
+            THistorico.getValueAt(i, 3).toString(),
+            THistorico.getValueAt(i, 4).toString(), 
+            THistorico.getValueAt(i, 5).toString())); 
+    }
+    return data.toString();
+    }
+    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
