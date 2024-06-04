@@ -296,6 +296,22 @@ public class GerAmigo extends javax.swing.JFrame {
             TListaA.getColumnModel().getColumn(i).setCellRenderer(centralizado);
         }
     }
+    
+    public String getTableData() {
+    StringBuilder data = new StringBuilder();
+    // Adiciona cabeçalhos
+    data.append(String.format("%-40s %-40s %-40s\n", "ID", "Nome", "Telefone"));
+    data.append("-------------------------------------------------------------------------------------------\n");
+    // Adiciona dados da tabela
+    for (int i = 0; i < TListaA.getRowCount(); i++) {
+        data.append(String.format("%-40s %-40s %-40s\n", 
+            TListaA.getValueAt(i, 0).toString(), 
+            TListaA.getValueAt(i, 1).toString(), 
+            TListaA.getValueAt(i, 2).toString()));
+    }
+    return data.toString();
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
