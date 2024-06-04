@@ -3,9 +3,9 @@
 Projeto feito para a A3 no primeiro semestre da nossa faculdade.
 
 ## Autores
-- Cristian de Paula Santos
-- Luiza da Motta de Lima
-- Luiz Eduardo Possebon Ribeiro
+- Cristian de Paula Santos (cpscristian, 1072415373)
+- Luiza da Motta de Lima (luizalml, 1072416150)
+- Luiz Eduardo Possebon Ribeiro (LuizPossebon, 1072418181)
 
 ### Requisitos funcionais:
 - RF001 O sistema deve permitir cadastrar ferramentas e suas informações.
