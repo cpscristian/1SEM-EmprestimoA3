@@ -1,5 +1,7 @@
 package visao;
 
+import visao.relatorios.MenuRelatorios;
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     public MenuPrincipal() {
@@ -17,6 +19,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BGerF = new javax.swing.JButton();
         BGerA = new javax.swing.JButton();
         BGerE = new javax.swing.JButton();
+        BRelatorios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -52,6 +55,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        BRelatorios.setText("Relatórios");
+        BRelatorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BRelatoriosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,7 +76,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(BGerE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(BGerA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(BGerF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(BGerF, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(BRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(8, 8, 8))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
@@ -78,13 +89,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(BGerF)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(BGerA)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(BGerE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addComponent(BRelatorios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(BFechar)
                 .addGap(15, 15, 15))
         );
@@ -113,6 +126,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerEActionPerformed
+
+    private void BRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRelatoriosActionPerformed
+        MenuRelatorios janela = new MenuRelatorios();
+        janela.setVisible(true);
+        MenuPrincipal.this.dispose();
+    }//GEN-LAST:event_BRelatoriosActionPerformed
 
     public static void main(String args[]) {
         
@@ -148,6 +167,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BGerA;
     private javax.swing.JButton BGerE;
     private javax.swing.JButton BGerF;
+    private javax.swing.JButton BRelatorios;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

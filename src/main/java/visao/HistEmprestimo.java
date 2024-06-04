@@ -169,7 +169,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
                 a.getIdFerramentaEmprestimo(),
                 a.getDataInicio(),
                 a.getDataDevolucao(),
-                a.isStatus() ? "Devolvido" : "Ativo"
+                a.isStatus() ? "Ativo" : "Devolvido "
             });
         }
         //Centraliza as colunas

@@ -15,7 +15,7 @@ public class Emprestimo {
     private EmprestimoDAO dao;
 
     public Emprestimo(){
-        this(0,0,0,LocalDate.of(1970, 1, 1),LocalDate.of(1970, 1, 1),true);
+        this(0,0,0,LocalDate.of(1970, 1, 1),LocalDate.of(1970, 1, 1),false);
     }
 
     public Emprestimo(int idEmprestimo, int idAmigoEmprestimo, int idFerramentaEmprestimo, LocalDate dataInicio, LocalDate dataDevolucao, boolean status) {
