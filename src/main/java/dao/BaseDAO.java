@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BaseDAO {
-    //ESTABELECE A CONEXÃO
+    // Método que estabelece conexão com o banco de dados
     public Connection getConexao() {
     
         Connection connection = null; //instância da conexão
@@ -15,17 +15,17 @@ public class BaseDAO {
                 Class.forName(driver);
                 
                 //Configurar a conexão
-                String server = "localhost";
-                String database = "emprestimoa3";
+                String server = "localhost"; // Endereço do servidor
+                String database = "emprestimoa3"; // Nome do banco de dados
                 String url = "jdbc:mysql://" + server + ":3306/" 
-                        + database + "?useTimezone=true&serverTimezone=UTC";
-                String user = "root";
-                String password = "senhadosql18%";
+                        + database + "?useTimezone=true&serverTimezone=UTC"; // URL de conexão com o banco
+                String user = "root"; // Usuário do banco de dados
+                String password = "senhadosql18%"; // Senha do banco de dados
                 
-                //Conectando...
+                // Estabelecendo a conexão
                 connection = DriverManager.getConnection(url, user, password);
 
-                //Testando...
+                // Verificação do status da conexão
                 if (connection != null) {
                     System.out.println("Status: Conectado!");
                 } else {
@@ -34,10 +34,10 @@ public class BaseDAO {
                 
                 return connection;
                 
-            } catch (ClassNotFoundException e) { //Driver não encontrado
+            } catch (ClassNotFoundException e) { // Driver não encontrado
                 System.out.println("O driver nao foi encontrado.");
                 return null;
-            } catch (SQLException e) {
+            } catch (SQLException e) { // Falha na conexão
                 System.out.println("Nao foi possivel conectar...");
                 return null;
             }
