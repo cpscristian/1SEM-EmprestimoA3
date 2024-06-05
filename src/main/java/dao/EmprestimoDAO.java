@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Emprestimo;
 
 public class EmprestimoDAO extends BaseDAO {
@@ -105,4 +106,31 @@ public class EmprestimoDAO extends BaseDAO {
         }
         return true;
     }
+    
+    //Auto-explicatório mas... Verifica se tem algum empréstimo ativo ligado ao amigo selecionado
+    public boolean verificaSeTemEmprestimoAtivo(int idAmigoEmprestimo) {
+           String sql = "SELECT COUNT(*) AS count FROM emprestimo WHERE idAmigoEmprestimo = ? AND status = true";
+           try {
+                PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+                stmt.setInt(1, idAmigoEmprestimo);
+                ResultSet res = stmt.executeQuery();
+           
+                //se for maior que zero
+                if (res.next() && res.getInt("count") > 0) {
+                    JOptionPane.showMessageDialog(null, "O amigo possui empréstimo(s) ativo(s).");
+                    res.close();
+                    stmt.close();
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "O amigo não possuí nenhum empréstimo ativo.");
+                    res.close();
+                    stmt.close();
+                    return false;
+                }
+            
+           } catch (SQLException ex) {
+                System.out.println("Erro:" + ex);
+                throw new RuntimeException(ex);
+           }
+     }
 }
