@@ -132,6 +132,8 @@ public class GerEmprestimo extends javax.swing.JFrame {
             }
         });
 
+        TFDataInicioE.setToolTipText("");
+
         jLabel3.setText("Data de Início:");
 
         jLabel4.setText("ID do Amigo:");
@@ -139,6 +141,8 @@ public class GerEmprestimo extends javax.swing.JFrame {
         jLabel5.setText("ID da Ferramenta");
 
         jLabel6.setText("Data de devolução:");
+
+        TFDataDevolucaoE.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -241,20 +245,28 @@ public class GerEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_BVoltarEActionPerformed
 
     private void BSalvarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarEActionPerformed
-            int idAmigoEmprestimo = Integer.parseInt(TFIDAmigoE.getText());
-            int idFerramentaEmprestimo = Integer.parseInt(TFIDFerramentaE.getText());
-            LocalDate dataInicio = LocalDate.parse(TFDataInicioE.getText());
-            LocalDate dataDevolucao = LocalDate.parse(TFDataDevolucaoE.getText());
-            
-        
-            if (this.objetoemprestimo.insertEmprestimoBD(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao)) {
+            try{
+                //Pega os valores dos campos de texto
+                int idAmigoEmprestimo = Integer.parseInt(TFIDAmigoE.getText());
+                int idFerramentaEmprestimo = Integer.parseInt(TFIDFerramentaE.getText());
+                LocalDate dataInicio = LocalDate.parse(TFDataInicioE.getText());
+                LocalDate dataDevolucao = LocalDate.parse(TFDataDevolucaoE.getText());
+                
+                //Verifica se há outros empréstimos ativos ligados ao amigo selecionado
+                objetoemprestimo.verificaSeTemEmprestimoAtivo(idAmigoEmprestimo);
+                
+                //Insere os valores preenchidos no BD
+                if (this.objetoemprestimo.insertEmprestimoBD(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao)) {
                     JOptionPane.showMessageDialog(null, "Empréstimo cadastrado com Sucesso!");
                     // limpa campos da interface
                     this.TFIDAmigoE.setText("");
                     this.TFIDFerramentaE.setText("");
                     this.TFDataInicioE.setText("");
                     this.TFDataDevolucaoE.setText("");
-            }
+                }
+        }catch (java.time.format.DateTimeParseException e) {
+            JOptionPane.showMessageDialog(null, "A data deve ter formato AAAA-MM-DD");
+        }
     }//GEN-LAST:event_BSalvarEActionPerformed
 
     private void BHistoricoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BHistoricoEActionPerformed

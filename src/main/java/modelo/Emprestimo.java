@@ -102,8 +102,14 @@ public class Emprestimo {
         dao.deleteEmprestimoBD(idEmprestimo);
         return true;
     }
+    
     public boolean updateStatusEmprestimoBD(int idEmprestimo, boolean status){
         dao.updateStatusEmprestimoBD(idEmprestimo, status);
+        return true;
+    }
+    
+    public boolean verificaSeTemEmprestimoAtivo(int idAmigoEmprestimo){
+        dao.verificaSeTemEmprestimoAtivo(idAmigoEmprestimo);
         return true;
     }
 }

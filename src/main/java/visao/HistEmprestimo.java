@@ -1,6 +1,7 @@
 package visao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -162,6 +163,21 @@ public class HistEmprestimo extends javax.swing.JFrame {
         modelo.setNumRows(0); // Posiciona na primeira linha da tabela
         // Carrega a lista de objetos emprestimo
         ArrayList<Emprestimo> minhaListaEmprestimo = objetoemprestimo.getMinhaListaEmprestimo();
+        
+        // Conta empréstimos por amigo
+        HashMap<Integer, Integer> contagemEmprestimos = new HashMap<>();
+        for (Emprestimo e : minhaListaEmprestimo) {
+            int idAmigo = e.getIdAmigoEmprestimo();
+            contagemEmprestimos.put(idAmigo, contagemEmprestimos.getOrDefault(idAmigo, 0) + 1);
+        }
+
+        // Ordena lista de empréstimos com base na contagem de empréstimos
+        minhaListaEmprestimo.sort((e1, e2) -> {
+            int count1 = contagemEmprestimos.get(e1.getIdAmigoEmprestimo());
+            int count2 = contagemEmprestimos.get(e2.getIdAmigoEmprestimo());
+            return Integer.compare(count2, count1); // Ordem decrescente
+        });
+        // Adicionar dados ordenados na tabela
         for (Emprestimo a : minhaListaEmprestimo) {
             modelo.addRow(new Object[]{
                 a.getIdEmprestimo(),

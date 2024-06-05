@@ -13,7 +13,7 @@ Projeto feito para a A3 no primeiro semestre da nossa faculdade.
 - RF003 O sistema deve permitir registrar o empréstimo de determinada ferramenta a um amigo.
 - RF004 O sistema deve ter um relatório de ferramentas e o quanto ele gastou.
 - RF005 O sistema deve apresentar um histórico de empréstimos realizados e ativos.
-- RF006 O sistema deve permitir acessar um "ranking" de quem fez mais empréstimos.
+- RF006 Deve ser possível saber quem fez mais empréstimos
 - RF007 O sistema deve mostrar se o amigo ainda não devolveu algo a cada empréstimo registrado a ele.
   
 ### Requisitos Não-Funcionais:
