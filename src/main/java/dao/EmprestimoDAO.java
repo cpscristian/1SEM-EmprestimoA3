@@ -11,22 +11,25 @@ import javax.swing.JOptionPane;
 import modelo.Emprestimo;
 
 public class EmprestimoDAO extends BaseDAO {
+    // Lista para armazenar objetos do tipo Emprestimo
     public ArrayList<Emprestimo> minhaListaEmprestimo = new ArrayList<>();
     public ArrayList<Emprestimo> getMinhaListaEmprestimo() {
-        minhaListaEmprestimo.clear();
+        minhaListaEmprestimo.clear(); // Limpa a lista antes de preenchê-la novamente
         
         try {
-            Statement stmt = this.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("SELECT * FROM emprestimo");
+            Statement stmt = this.getConexao().createStatement(); // Cria um objeto Statement para executar consultas SQL
+            ResultSet res = stmt.executeQuery("SELECT * FROM emprestimo"); // Executa a consulta SQL e armazena os resultados em um ResultSet
             while (res.next()) {
+                // Extrai os dados de cada coluna do ResultSet
                 int idEmprestimo = res.getInt("idEmprestimo");
                 int idAmigoEmprestimo = res.getInt("idAmigoEmprestimo");
                 int idFerramentaEmprestimo = res.getInt("idFerramentaEmprestimo");
                 LocalDate dataInicio = res.getDate("dataInicio").toLocalDate();
                 LocalDate dataDevolucao = res.getDate("dataDevolucao").toLocalDate();
                 boolean status = res.getBoolean("status");
+                // Cria um novo objeto Emprestimo com os valores obtidos
                 Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status);
-                minhaListaEmprestimo.add(objeto);
+                minhaListaEmprestimo.add(objeto); // Adiciona o objeto Emprestimo a lista
             }
             res.close();
             stmt.close();
@@ -36,16 +39,19 @@ public class EmprestimoDAO extends BaseDAO {
         return minhaListaEmprestimo;
     }
     
+    // Define a lista de Emprestimos
     public void setMinhaListaEmprestimo(ArrayList<Emprestimo> minhaListaEmprestimo) {
         this.minhaListaEmprestimo = minhaListaEmprestimo;
     }
     
+    // Insere um novo Emprestimo no banco de dados
     public boolean insertEmprestimoBD(Emprestimo objeto) {
         //Inserindo 
         String sql = "INSERT INTO emprestimo(idAmigoEmprestimo, idFerramentaEmprestimo, dataInicio, dataDevolucao, status) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             
+            // Define os valores dos parâmetros da consulta
             stmt.setInt(1, objeto.getIdAmigoEmprestimo());
             stmt.setInt(2, objeto.getIdFerramentaEmprestimo());
             stmt.setDate(3, Date.valueOf(objeto.getDataInicio()));
@@ -61,7 +67,7 @@ public class EmprestimoDAO extends BaseDAO {
         }
     }
     
-    //Retorna o maior id de Amigo
+    // Retorna o maior id de Emprestimo
     public int maiorIDEmprestimo() {
         int maiorIDEmprestimo = 0;
         try {
@@ -89,12 +95,13 @@ public class EmprestimoDAO extends BaseDAO {
         return true;
     }
     
-    //Atualiza o status
+    //Atualiza o status de um Emprestimo específico pelo seu ID
     public boolean updateStatusEmprestimoBD(int idEmprestimo, boolean status) {
         String sql = "UPDATE emprestimo SET status = ? WHERE idEmprestimo = ?";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             
+            // Define os valores dos parâmetros da consulta
             stmt.setBoolean(1, status);
             stmt.setInt(2, idEmprestimo);
             
@@ -127,7 +134,7 @@ public class EmprestimoDAO extends BaseDAO {
                     stmt.close();
                     return false;
                 }
-            
+            // Mensagem de erro
            } catch (SQLException ex) {
                 System.out.println("Erro:" + ex);
                 throw new RuntimeException(ex);
