@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+// A classe GerAmigo é responsável por gerenciar a interface gráfica para cadastro, edição, exclusão e listagem de amigos.
 public class GerAmigo extends javax.swing.JFrame {
 
     private Amigo objetoamigo; // cria o vínculo com o Amigo
@@ -156,6 +157,7 @@ public class GerAmigo extends javax.swing.JFrame {
     //Cadastra no BD
     private void BSalvarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarAActionPerformed
         try {
+            // Validação dos campos de entrada
             String nomeAmigo = "";
             String telefone = "";
             
@@ -178,6 +180,7 @@ public class GerAmigo extends javax.swing.JFrame {
                 this.TFNomeA.setText("");
                 this.TFTelefoneA.setText("");
             }
+            // Mensagem de erro
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
@@ -232,6 +235,7 @@ public class GerAmigo extends javax.swing.JFrame {
 
     private void BAlterarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAlterarAActionPerformed
         try {
+            // Validação do amigo selecionado na lista
             int idAmigo = 0;
             if (this.TListaA.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro selecione um amigo para ALTERAR");
@@ -239,6 +243,7 @@ public class GerAmigo extends javax.swing.JFrame {
                 idAmigo = Integer.parseInt(this.TListaA.getValueAt(this.TListaA.getSelectedRow(), 0).toString());
             }
             
+            // Validação dos campos de entrada
             String nomeAmigo = "";
             String telefone = "";
             
