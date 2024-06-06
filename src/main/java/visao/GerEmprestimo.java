@@ -10,18 +10,25 @@ import modelo.Amigo;
 import modelo.Emprestimo;
 import modelo.Ferramenta;
 
+// A classe GerEmprestimo é responsável por gerenciar a interface gráfica para registro de empréstimos
 public class GerEmprestimo extends javax.swing.JFrame {
+    // Declaração de variáveis privadas para objetos de empréstimo, amigo e ferramenta
     private Emprestimo objetoemprestimo;
     private Amigo objetoamigo;
     private Ferramenta objetoferramenta;
    public GerEmprestimo() {
        
+       // Inicializa os componentes da interface gráfica
         initComponents();
+        // Define a localização da janela no centro da tela
         setLocationRelativeTo(null);
+        // Impede o redimensionamento da janela
         setResizable(false);
+        // Inicializa os objetos de amigo, ferramenta e empréstimo
         this.objetoamigo = new Amigo();
         this.objetoferramenta = new Ferramenta();
         this.objetoemprestimo = new Emprestimo();
+        // Carrega a lista de amigos e ferramentas na interface gráfica
         this.carregaListaAmigo();
         this.carregaListaFerramenta();
     }
@@ -239,8 +246,11 @@ public class GerEmprestimo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BVoltarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVoltarEActionPerformed
+        // Cria uma nova instância da janela do Menu Principal
         MenuPrincipal janela = new MenuPrincipal();
+        // Torna a janela do Menu Principal visível
         janela.setVisible(true);
+        // Fecha a janela atual (GerEmprestimo)
         GerEmprestimo.this.dispose();
     }//GEN-LAST:event_BVoltarEActionPerformed
 
@@ -265,13 +275,17 @@ public class GerEmprestimo extends javax.swing.JFrame {
                     this.TFDataDevolucaoE.setText("");
                 }
         }catch (java.time.format.DateTimeParseException e) {
+            // Exibe uma mensagem de erro se a data estiver no formato incorreto
             JOptionPane.showMessageDialog(null, "A data deve ter formato AAAA-MM-DD");
         }
     }//GEN-LAST:event_BSalvarEActionPerformed
 
     private void BHistoricoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BHistoricoEActionPerformed
+        // Cria uma nova instância da janela do Histórico de Empréstimos
         HistEmprestimo janela = new HistEmprestimo();
+        // Torna a janela do Histórico de Empréstimos visível
         janela.setVisible(true);
+        // Fecha a janela atual (GerEmprestimo)
         GerEmprestimo.this.dispose();
     }//GEN-LAST:event_BHistoricoEActionPerformed
 
@@ -303,7 +317,7 @@ public class GerEmprestimo extends javax.swing.JFrame {
                 a.getTelefone()
             });
         }
-        //Centraliza as colunas
+        // Centraliza as colunas
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
         
@@ -318,6 +332,7 @@ public class GerEmprestimo extends javax.swing.JFrame {
         // Carrega a lista de objetos aluno
         ArrayList<Ferramenta> minhaListaFerramenta = objetoferramenta.getMinhaListaFerramenta();
         for (Ferramenta a : minhaListaFerramenta) {
+            // Adiciona uma linha na tabela para cada ferramenta
             modelo.addRow(new Object[]{
                 a.getIdFerramenta(),
                 a.getNomeFerramenta(),
@@ -325,7 +340,7 @@ public class GerEmprestimo extends javax.swing.JFrame {
                 a.getPreco()
             });
         }
-        //Centraliza as colunas
+        // Centraliza as colunas
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
         
