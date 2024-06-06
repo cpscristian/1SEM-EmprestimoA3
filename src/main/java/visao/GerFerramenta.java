@@ -323,6 +323,7 @@ public class GerFerramenta extends javax.swing.JFrame {
 
     public String getTableData() {
     StringBuilder data = new StringBuilder();
+    double totalPrecos = 0.0;
     // Adiciona cabeçalhos
     data.append(String.format("%-40s %-40s %-40s %-40s\n", "ID", "Nome", "Marca", "Preço"));
     data.append("------------------------------------------------------------------------------------------------------------------\n");
@@ -333,7 +334,11 @@ public class GerFerramenta extends javax.swing.JFrame {
             TListaF.getValueAt(i, 1).toString(), 
             TListaF.getValueAt(i, 2).toString(), 
             TListaF.getValueAt(i, 3).toString()));
+            totalPrecos += Double.parseDouble(TListaF.getValueAt(i, 3).toString());
     }
+    // Adiciona o total dos preços ao final do relatório
+    data.append("------------------------------------------------------------------------------------------------------------------\n");
+    data.append(String.format("%-40s %-40s %-40s %-40s\n", "", "", "Preço total:", totalPrecos));
     return data.toString();
     }
     
