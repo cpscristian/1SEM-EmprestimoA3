@@ -107,12 +107,14 @@ public class HistEmprestimo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Volta à página anterior
     private void BVoltarHEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVoltarHEActionPerformed
         GerEmprestimo janela = new GerEmprestimo();
         janela.setVisible(true);
         HistEmprestimo.this.dispose();
     }//GEN-LAST:event_BVoltarHEActionPerformed
 
+    //Exclui o empréstimo selecionado
     private void BExcluirHEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirHEActionPerformed
             try {
             int idEmprestimo = 0;
@@ -138,6 +140,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BExcluirHEActionPerformed
 
+    //Marca um empréstimo como devolvido ou ativo
     private void BDevolvidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDevolvidoActionPerformed
         int selectedRow = THistorico.getSelectedRow();
 
@@ -158,6 +161,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BDevolvidoActionPerformed
     
+    //Método que carrega a tebela dos empréstimos para exibição
     public void carregaHistorico() {
         DefaultTableModel modelo = (DefaultTableModel) this.THistorico.getModel();
         modelo.setNumRows(0); // Posiciona na primeira linha da tabela
@@ -197,23 +201,24 @@ public class HistEmprestimo extends javax.swing.JFrame {
         }
     }
     
-    public String getTableData() {
-    StringBuilder data = new StringBuilder();
-    // Adiciona cabeçalhos
-    data.append(String.format("%-40s %-40s %-40s %-40s %-40s %-40s\n", "ID", "ID do amigo", "ID da ferramenta", "Data de início","Data de devolução", "Status"));
-    data.append("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    // Adiciona dados da tabela
-    for (int i = 0; i < THistorico.getRowCount(); i++) {
-        data.append(String.format("%-40s %-60s %-40s %-40s %-40s %-40s\n", 
-            THistorico.getValueAt(i, 0).toString(), 
-            THistorico.getValueAt(i, 1).toString(), 
-            THistorico.getValueAt(i, 2).toString(), 
-            THistorico.getValueAt(i, 3).toString(),
-            THistorico.getValueAt(i, 4).toString(), 
-            THistorico.getValueAt(i, 5).toString())); 
-    }
-    return data.toString();
-    }
+        //Método que pega a tabela dos empréstimos e transforma em texto pro relatório
+        public String getTableData() {
+            StringBuilder data = new StringBuilder();
+            // Adiciona cabeçalhos
+            data.append(String.format("%-40s %-40s %-40s %-40s %-40s %-40s\n", "ID", "ID do amigo", "ID da ferramenta", "Data de início","Data de devolução", "Status"));
+            data.append("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+            // Adiciona dados da tabela
+            for (int i = 0; i < THistorico.getRowCount(); i++) {
+                data.append(String.format("%-40s %-60s %-40s %-40s %-40s %-40s\n", 
+                    THistorico.getValueAt(i, 0).toString(), 
+                    THistorico.getValueAt(i, 1).toString(), 
+                    THistorico.getValueAt(i, 2).toString(), 
+                    THistorico.getValueAt(i, 3).toString(),
+                    THistorico.getValueAt(i, 4).toString(), 
+                    THistorico.getValueAt(i, 5).toString())); 
+            }
+            return data.toString();
+        }
     
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

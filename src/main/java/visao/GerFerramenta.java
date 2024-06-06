@@ -157,19 +157,20 @@ public class GerFerramenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//Botão Voltar
+    //Volta à página anterior
     private void BVoltarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVoltarFActionPerformed
         MenuPrincipal janela = new MenuPrincipal();
         janela.setVisible(true);
         GerFerramenta.this.dispose();
     }//GEN-LAST:event_BVoltarFActionPerformed
 
-//Botão Salvar
+    //Salva/Cadastra a ferramenta no BD
     private void BSalvarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalvarFActionPerformed
         try {
             String nomeFerramenta = "";
             String marca = "";
             double preco = 0.0;
+            
             //Restrições
             if (this.TFNomeF.getText().length() < 2) {
                 throw new Mensagem("Nome da ferramenta deve conter ao menos 2 caracteres.");
@@ -207,6 +208,7 @@ public class GerFerramenta extends javax.swing.JFrame {
         carregaLista();
     }//GEN-LAST:event_BSalvarFActionPerformed
 
+    //Exclui a ferramenta selecionada
     private void BExcluirFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BExcluirFActionPerformed
         try {
             // validando dados da interface gráfica.
@@ -241,6 +243,7 @@ public class GerFerramenta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BExcluirFActionPerformed
 
+    //Altera os dados da ferramenta conforme inserido os dados
     private void BAlterarFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAlterarFActionPerformed
         try {
             int idFerramenta = 0;
@@ -288,6 +291,7 @@ public class GerFerramenta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BAlterarFActionPerformed
 
+    //Seleciona a linha especifica da tabela ao clicar
     private void TListaFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TListaFMouseClicked
         if (this.TListaF.getSelectedRow() != -1) {
             String nomeFerramenta = this.TListaF.getValueAt(this.TListaF.getSelectedRow(), 1).toString();
@@ -299,6 +303,8 @@ public class GerFerramenta extends javax.swing.JFrame {
             this.TFPrecoF.setText(String.valueOf(preco));
         }
     }//GEN-LAST:event_TListaFMouseClicked
+    
+    //Método que carrega a tebela das ferramentas para exibição
     public void carregaLista() {
         DefaultTableModel modelo = (DefaultTableModel) this.TListaF.getModel();
         modelo.setNumRows(0); // Posiciona na primeira linha da tabela
@@ -321,6 +327,7 @@ public class GerFerramenta extends javax.swing.JFrame {
         }
     }
 
+    //Método que pega a tabela das ferramentas e transforma em texto pro relatório
     public String getTableData() {
     StringBuilder data = new StringBuilder();
     double totalPrecos = 0.0;

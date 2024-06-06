@@ -103,28 +103,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Fecha a aplicação
     private void BFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFecharActionPerformed
         System.exit(0);
     }//GEN-LAST:event_BFecharActionPerformed
 
+    //Acessa a página de gerenciamento das ferramentas
     private void BGerFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerFActionPerformed
         GerFerramenta janela = new GerFerramenta();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerFActionPerformed
 
+    //Acessa a página de gerenciamento das amigos
     private void BGerAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerAActionPerformed
         GerAmigo janela = new GerAmigo();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerAActionPerformed
 
+    //Acessa a página de gerenciamento dos empréstimos
     private void BGerEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BGerEActionPerformed
         GerEmprestimo janela = new GerEmprestimo();
         janela.setVisible(true);
         MenuPrincipal.this.dispose();
     }//GEN-LAST:event_BGerEActionPerformed
 
+    //Acessa a página dos relatórios
     private void BRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRelatoriosActionPerformed
         MenuRelatorios janela = new MenuRelatorios();
         janela.setVisible(true);

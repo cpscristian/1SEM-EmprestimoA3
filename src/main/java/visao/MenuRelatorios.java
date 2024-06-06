@@ -94,16 +94,18 @@ public class MenuRelatorios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //Volta à página anterior
     private void BVoltarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVoltarRActionPerformed
         MenuPrincipal janela = new MenuPrincipal();
         janela.setVisible(true);
         MenuRelatorios.this.dispose();
     }//GEN-LAST:event_BVoltarRActionPerformed
-
+    
+    //Gera o relatório das ferramentas cadastradas
     private void BFerramentasRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFerramentasRActionPerformed
         GerFerramenta gerFerramenta = new GerFerramenta(); // Instancia a classe GerFerramenta
-        String data = gerFerramenta.getTableData(); // Obtém os dados da tabela
+        String data = gerFerramenta.getTableData(); //Pega o método para obter os dados da tabela
 
         JTextArea textArea = new JTextArea(30,50);
         textArea.setEditable(true);
@@ -112,10 +114,11 @@ public class MenuRelatorios extends javax.swing.JFrame {
     
         JOptionPane.showMessageDialog(null, painelRolagem, "Relatório de Ferramentas", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BFerramentasRActionPerformed
-
+    
+    //Gera o relatório dos amigos cadastrados
     private void BAmigosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAmigosRActionPerformed
         GerAmigo gerAmigo = new GerAmigo(); // Instancia a classe GerAmigo
-        String data = gerAmigo.getTableData(); // Obtém os dados da tabela
+        String data = gerAmigo.getTableData(); //Pega o método para obter os dados da tabela
 
         JTextArea textArea = new JTextArea(30,50);
         textArea.setEditable(true);
@@ -125,15 +128,16 @@ public class MenuRelatorios extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, painelRolagem, "Relatório de Amigos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BAmigosRActionPerformed
 
+    //Gera o relatório dos empréstimos cadastrados
     private void BEmprestimosRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BEmprestimosRActionPerformed
         HistEmprestimo HistEmprestimo = new HistEmprestimo(); // Instancia a classe HistEmprestimo
-        String data = HistEmprestimo.getTableData(); // Obtém os dados da tabela
+        String data = HistEmprestimo.getTableData(); //Pega o método para obter os dados da tabela
 
         JTextArea textArea = new JTextArea(30,60);
         textArea.setEditable(true);
         textArea.setText(data); // Define o texto no JTextArea
         JScrollPane painelRolagem = new JScrollPane(textArea);
-    
+        
         JOptionPane.showMessageDialog(null, painelRolagem, "Relatório de Amigos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BEmprestimosRActionPerformed
 
