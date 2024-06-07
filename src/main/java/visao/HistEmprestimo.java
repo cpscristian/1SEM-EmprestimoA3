@@ -29,6 +29,7 @@ public class HistEmprestimo extends javax.swing.JFrame {
         BDevolvido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Histórico de empréstimos");
 
         BVoltarHE.setText("Voltar");
         BVoltarHE.addActionListener(new java.awt.event.ActionListener() {
